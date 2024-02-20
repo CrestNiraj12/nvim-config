@@ -12,10 +12,9 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.smartindent = true
-
+opt.colorcolumn = "120"
 opt.fillchars = { eob = " " }
 opt.mouse = "a"
-
 opt.number = true
 opt.relativenumber = true
 

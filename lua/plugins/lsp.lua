@@ -119,8 +119,12 @@ return {
         ensure_installed = {
           "tsserver",
           "html",
-          "tailwindcss",
-          "pyright"
+          "pyright",
+          "jsonls",
+          "cssls",
+          "dockerls",
+          "bashls",
+          "vimls",
         },
         handlers = {
           default_setup,
