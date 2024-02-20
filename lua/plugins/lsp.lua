@@ -148,6 +148,7 @@ return {
           "mypy",
           "ruff",
           "black",
+          "marksman",
         },
         handlers = {
           default_setup,

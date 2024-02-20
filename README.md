@@ -1,4 +1,28 @@
+# My neovim setup
+
+## Plugins used
+1. autopairs - A super powerful autopair plugin for Neovim that supports multiple characters. 
+2. barbar - A tabline plugin with re-orderable, auto-sizing, clickable tabs, icons, nice highlighting, sort-by commands and a magic jump-to-buffer mode.
+3. catpuccin - A theme package.
+4. comments
+5. copilot
+6. debugger
+7. fidget
+8. fugitive
+9. gitsigns
+10. lsp
+11. neo-tree
+12. telescope
+13. tmux-navigator
+14. toggleterm
+15. treesitter
+16. trouble
+17. undotree
+19. wakatime
+
+
 ## Configuration for my nvim setup
+
 
 ```
 git clone https://github.com/theArjun/my-nvim-config ~/.config/nvim
@@ -38,16 +62,4 @@ if [[ -z $TMUX ]]; then
 fi
 
 tmux switch-client -t $selected_name
-```
-
-## Alacritty Setup
-
-```toml
-[window]
-decorations = "Buttonless"
-padding = { y = 5 }
-
-[font]
-normal = { family = "Hack Nerd Font" }
-size = 12
 ```
