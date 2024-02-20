@@ -1,7 +1,7 @@
 ## Configuration for my nvim setup
 
 ```
-git clone https://github.com/dipeshdulal/my-nvim-config ~/.config/nvim
+git clone https://github.com/theArjun/my-nvim-config ~/.config/nvim
 ```
 
 ## Sessionizer
