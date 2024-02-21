@@ -19,3 +19,7 @@ local plugins = {
 }
 require("lazy").setup(plugins)
 
+-- Autosave ehen the window loses focus or buffer is hidden --
+vim.cmd [[au FocusLost * silent! wa]]
+vim.cmd [[au BufLeave * silent! wa]]
+vim.cmd [[au InsertLeave * silent! wa]]
