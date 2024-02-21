@@ -19,6 +19,3 @@ local plugins = {
 }
 require("lazy").setup(plugins)
 
-if vim.g.neovide then
-
-end
