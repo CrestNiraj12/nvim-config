@@ -13,6 +13,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+-- Disable swap --
+vim.opt.swapfile = false
 
 local plugins = {
  { import = "plugins" },
@@ -23,3 +25,9 @@ require("lazy").setup(plugins)
 vim.cmd [[au FocusLost * silent! wa]]
 vim.cmd [[au BufLeave * silent! wa]]
 vim.cmd [[au InsertLeave * silent! wa]]
+
+-- Autoreload file changes --
+vim.o.autoread = true
+vim.o.updatetime = 300
+vim.api.nvim_create_autocmd("CursorHold", { pattern = "*", command = "checktime" })
+
