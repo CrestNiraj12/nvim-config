@@ -144,6 +144,7 @@ return {
           "dockerls",
           "ruff_lsp",
           "marksman",
+          "sourcery",
         },
         handlers = {
           default_setup,

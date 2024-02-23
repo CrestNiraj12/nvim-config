@@ -7,7 +7,6 @@ return {
       -- name = "venv",
       -- auto_refresh = false
       name = {
-        "venv",
         ".venv",
         "soudan",
       }
