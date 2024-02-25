@@ -31,3 +31,15 @@ vim.o.autoread = true
 vim.o.updatetime = 300
 vim.api.nvim_create_autocmd("CursorHold", { pattern = "*", command = "checktime" })
 
+-- Neovide settings --
+if vim.g.neovide then
+    -- Put anything you want to happen only in Neovide here
+    vim.o.guifont = "JetBrainsMono Nerd Font:h14"
+    vim.g.neovide_scale_factor = 1
+    vim.g.neovide_window_blurred = true
+    vim.g.neovide_scroll_animation_length = 0.4
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_theme = "catppuccin"
+    vim.g.neovide_confirm_quit = true
+    vim.g.neovide_fullscreen = true
+end
