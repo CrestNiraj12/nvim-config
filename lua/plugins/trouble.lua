@@ -7,7 +7,7 @@ return {
     local opts = {noremap = true, silent = true}
 
     -- Open Trouble with all diagnostics
-    map("n", "<leader>xx", "<cmd>Trouble<cr>", opts)
+    map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
 
     -- Open Trouble with diagnostics for the current buffer
     map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
