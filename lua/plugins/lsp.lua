@@ -108,23 +108,13 @@ return {
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
       local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
       local on_attach = function(client, bufnr)
-        -- enable completion
-        require('cmp_nvim_lsp').setup({ client = client })
-
-        -- enable null-ls
-        require('null-ls').setup({ bufnr = bufnr })
-
-        -- enable gitsigns
-        require('gitsigns').setup({
-          attach_to_untracked = false,
-          current_line_blame = true,
-          current_line_blame_opts = {
-            virt_text = true,
-            virt_text_pos = 'eol',
-            delay = 1000,
-          },
-        })
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        -- Setting up buffer-specific LSP capabilities
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        -- Additional capabilities adjustments...
       end
 
       local default_setup = function(server)
