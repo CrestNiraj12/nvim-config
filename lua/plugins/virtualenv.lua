@@ -8,7 +8,6 @@ return {
       -- auto_refresh = false
       name = {
         ".venv",
-        "soudan",
       }
     }
   end,
