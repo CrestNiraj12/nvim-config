@@ -1,6 +1,6 @@
 return {
   {
-    'akinsho/toggleterm.nvim',
+    'akinsho/toggleterm.nvim', 
     version = "*", 
     opts = {
       -- Terminal configuration options
@@ -30,11 +30,5 @@ return {
         vim.cmd("Closing terminal")
       end,
     },
-    -- Keymap configuration
-    config = function()
-      -- Example keymap in normal mode to open/close the terminal
-      vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>ToggleTerm<CR>", {noremap = true, silent = true})
-      -- Additional keymaps can be configured here
-    end
   }
 }
