@@ -21,14 +21,14 @@ local plugins = {
 }
 require("lazy").setup(plugins)
 
--- Autosave ehen the window loses focus or buffer is hidden --
+-- Autosave when the window loses focus or buffer is hidden --
 vim.cmd [[au FocusLost * silent! wa]]
 vim.cmd [[au BufLeave * silent! wa]]
 vim.cmd [[au InsertLeave * silent! wa]]
 
 -- Autoreload file changes --
 vim.o.autoread = true
-vim.o.updatetime = 300
+vim.o.updatetime = 50
 vim.api.nvim_create_autocmd("CursorHold", { pattern = "*", command = "checktime" })
 
 -- Neovide settings --
