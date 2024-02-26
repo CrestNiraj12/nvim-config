@@ -136,12 +136,10 @@ return {
 
       require('mason-lspconfig').setup({
         ensure_installed = {
-          "gopls",
           "tsserver",
           "html",
           "pyright",
           "jsonls",
-          "dockerls",
           "ruff_lsp",
           "marksman",
           "sourcery",
