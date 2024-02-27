@@ -1,4 +1,5 @@
 require("core-setup")
+require("keymaps")
 
 -- lazy plugin manager setup --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
