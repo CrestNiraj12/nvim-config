@@ -127,10 +127,12 @@ return {
       require('mason-lspconfig').setup({
         ensure_installed = {
           "tsserver",
+          "jdtls",
           "html",
           "pyright",
           "jsonls",
           "ruff_lsp",
+          "rust_analyzer",
           "marksman",
           "sourcery",
         },
