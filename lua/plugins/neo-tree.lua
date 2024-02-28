@@ -8,8 +8,8 @@ return {
   },
   keys = {
     { '<C-n>', "<cmd>Neotree toggle position=left <CR>", desc="Toggle Neo-tree" },
-    -- Additional keymaps
-    { '<leader>nf', "<cmd>Neotree toggle position=float <CR>", desc="Toggle Neo-tree in floating window" },
+    -- Focus --
+    { '<leader>nf', "<cmd>Neotree focus <CR>", desc="Focus Neo-tree" },
     { '<leader>nd', "<cmd>Neotree toggle position=left reveal_force_cwd=true <CR>", desc="Toggle Neo-tree and reveal current file" },
     { '<leader>nb', "<cmd>Neotree toggle position=left source=buffers <CR>", desc="Toggle Neo-tree with buffer list" },
     -- You can add more mappings as needed
