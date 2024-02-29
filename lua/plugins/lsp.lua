@@ -111,10 +111,6 @@ return {
 
       local on_attach = function(client, bufnr)
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
-        -- Setting up buffer-specific LSP capabilities
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-        -- Additional capabilities adjustments...
       end
 
       local default_setup = function(server)
@@ -126,7 +122,6 @@ return {
 
       require('mason-lspconfig').setup({
         ensure_installed = {
-          "tsserver",
           "jdtls",
           "html",
           "pyright",
