@@ -27,3 +27,6 @@ set('n', '<leader>bl', ':ls<CR>', { noremap = true, silent = true, desc = 'Buffe
 
 -- Buffer Close All
 set('n', '<leader>ba', ':bufdo bd<CR>', { noremap = true, silent = true, desc = 'Buffer Close All' })
+
+-- Save file
+set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true, desc = 'Save file' })
