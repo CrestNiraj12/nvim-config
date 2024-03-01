@@ -38,5 +38,9 @@ return {
     k.set("n", "<leader>fg", function() builtin.live_grep({ file_ignore_patterns = {"migrations/.*"} }) end, {})
     k.set("n", "<leader>fb", builtin.buffers, {})
     k.set("n", "<leader>fh", builtin.help_tags, {})
+    k.set("n", "<leader>fc", builtin.commands, {})
+    k.set("n", "<leader>fo", builtin.oldfiles, {})
+    k.set("n", "<leader>fw", builtin.current_buffer_fuzzy_find, {})
+    k.set("n", "<leader>fq", builtin.quickfix, {})
   end
 }
