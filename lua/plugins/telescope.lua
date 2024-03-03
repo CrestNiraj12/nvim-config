@@ -41,6 +41,7 @@ return {
     k.set("n", "<leader>fc", builtin.commands, {})
     k.set("n", "<leader>fo", builtin.oldfiles, {})
     k.set("n", "<leader>fw", builtin.current_buffer_fuzzy_find, {})
+    k.set("n", "<leader>fk", builtin.keymaps, {})
     k.set("n", "<leader>fq", builtin.quickfix, {})
   end
 }

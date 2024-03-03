@@ -5,7 +5,6 @@ return {
     opts = {
       -- Terminal configuration options
       size = 20, -- Terminal size: can be a number or a function for dynamic sizing
-      open_mapping = [[<c-\>]], -- Keymap to toggle the terminal
       hide_numbers = true, -- Hide line numbers in toggleterm buffers
       shade_filetypes = {},
       shade_terminals = true,
