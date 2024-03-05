@@ -11,15 +11,13 @@ return {
             -- Set up any ALE linters, fixers, or other options as needed
             -- Example: Enable specific linters
             vim.g.ale_linters = {
-                python = {'flake8', 'mypy', 'ruff'},
-                javascript = {'eslint'},
+                python = {'flake8', 'mypy', 'ruff', 'refurb', 'bandit', 'vulture'},
                 -- Add other languages and linters as needed
             }
 
             -- Example: Enable ALE fixers
             vim.g.ale_fixers = {
-                python = {'ruff'}, 
-                javascript = {'prettier'},
+                python = {'black','isort'}, 
                 -- Add other languages and fixers as needed
             }
             vim.g.ale_fix_on_save = 1  -- Automatically fix errors on save
