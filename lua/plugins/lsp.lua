@@ -127,7 +127,6 @@ return {
           "pyright",
           "jsonls",
           "pyre",
-          "ruff_lsp",
           "rust_analyzer",
           "marksman",
           "sourcery",
