@@ -128,6 +128,7 @@ return {
           "jsonls",
           "pyre",
           "rust_analyzer",
+          "taplo",
           "marksman",
           "sourcery",
         },
