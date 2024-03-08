@@ -17,7 +17,7 @@ return {
 
             -- Example: Enable ALE fixers
             vim.g.ale_fixers = {
-                python = {'black','isort'}, 
+                python = {'ruff_format','isort'}, 
                 -- Add other languages and fixers as needed
             }
             vim.g.ale_fix_on_save = 1  -- Automatically fix errors on save
