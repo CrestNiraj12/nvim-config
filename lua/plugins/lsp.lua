@@ -75,6 +75,7 @@ return {
 					"lua_ls",
 					"html",
 					"pyright",
+					"ruff_lsp",
 					"jsonls",
 					"rust_analyzer",
 					"taplo",
