@@ -9,8 +9,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- options --
 opt.expandtab = false -- Changed from true to false for noexpandtab
-opt.shiftwidth = 4 -- Changed from 2 to 4
-opt.tabstop = 4 -- Changed from 2 to 4
+opt.shiftwidth = 2
+opt.tabstop = 2 
 opt.smartindent = true -- Inherits autoindent behavior; smartindent implies autoindent
 
 opt.colorcolumn = "120"
