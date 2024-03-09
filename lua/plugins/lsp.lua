@@ -26,7 +26,7 @@ return {
 		config = function()
 			-- lsp keybindings
 			vim.api.nvim_create_autocmd('LspAttach', {
-				desc = 'LSP actions',
+
 				callback = function(event)
 					local opts = { buffer = event.buf }
 
@@ -59,7 +59,7 @@ return {
 			local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 			local on_attach = function(client, bufnr)
-				local bufopts = { noremap=true, silent=true, buffer=bufnr }
+				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 			end
 
 			local default_setup = function(server)
@@ -72,10 +72,10 @@ return {
 			require('mason-lspconfig').setup({
 				ensure_installed = {
 					"jdtls",
+					"lua_ls",
 					"html",
 					"pyright",
 					"jsonls",
-					"pyre",
 					"rust_analyzer",
 					"taplo",
 					"marksman",
