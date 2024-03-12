@@ -26,7 +26,6 @@ return{
                 },
               })
             ))
-
             -- Ensure the dependencies for the highlighters are met:
             -- 1. `luarocks install pcre2` for lua_pcre2_highlighter
             -- 2. Install `romgrk/fzy-lua-native` plugin for lua_fzy_highlighter
