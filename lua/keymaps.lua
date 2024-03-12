@@ -16,12 +16,6 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true, silent = true})
 -- Buffer Close
 set('n', '<leader>bd', ':bd<CR>', { noremap = true, silent = true, desc = 'Buffer Close' })
 
--- Buffer Next
-set('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true, desc = 'Buffer Next' })
-
--- Buffer Previous
-set('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true, desc = 'Buffer Previous' })
-
 -- Buffer List
 set('n', '<leader>bl', ':ls<CR>', { noremap = true, silent = true, desc = 'Buffer List' })
 
