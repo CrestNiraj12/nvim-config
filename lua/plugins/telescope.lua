@@ -39,12 +39,10 @@ return {
 		k.set("n", "<leader>fg", function() builtin.live_grep({ file_ignore_patterns = { "migrations/.*" } }) end, {})
 		k.set("n", "<leader>fb", builtin.buffers, {})
 		k.set("n", "<leader>fh", builtin.help_tags, {})
-		k.set("n", "<leader>fc", builtin.commands, {})
 		k.set("n", "<leader>fo", builtin.oldfiles, {})
-		k.set("n", "<leader>fw", builtin.current_buffer_fuzzy_find, {})
 		k.set("n", "<leader>fk", builtin.keymaps, {})
-		k.set("n", "<leader>fq", builtin.quickfix, {})
 		k.set("n", "<leader>fm", builtin.marks, {})
-		k.set("n", "<leader>ft", builtin.treesitter, {})
+		k.set("n", "<leader>fs", ':Telescope lsp_document_symbols<CR>', {})
+		k.set("n", "<leader>fr", ':Telescope lsp_references<CR>', {})
 	end
 }
