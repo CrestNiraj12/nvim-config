@@ -74,7 +74,6 @@ return {
 					"jdtls",
 					"lua_ls",
 					"html",
-					"bashls",
 					"ruff_lsp",
 					"pyright",
 					"jsonls",
