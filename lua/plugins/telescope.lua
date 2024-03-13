@@ -41,6 +41,7 @@ return {
 		k.set("n", "<leader>fh", builtin.help_tags, {})
 		k.set("n", "<leader>fo", builtin.oldfiles, {})
 		k.set("n", "<leader>fk", builtin.keymaps, {})
+		k.set("n", "<leader>fc", builtin.commands, {})
 		k.set("n", "<leader>fm", builtin.marks, {})
 		k.set("n", "<leader>fs", ':Telescope lsp_document_symbols<CR>', {})
 		k.set("n", "<leader>fr", ':Telescope lsp_references<CR>', {})
