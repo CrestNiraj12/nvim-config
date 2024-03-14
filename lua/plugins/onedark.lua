@@ -5,7 +5,7 @@ return {
             require('onedark').setup {
                 -- Your customization goes here. For example:
                 style = 'cool', -- or 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'
-                transparent = false, -- Enable this to make the background transparent
+                transparent = true, -- Enable this to make the background transparent
                 term_colors = true,
                 ending_tildes = false, -- Show ~ characters after the end of buffers
                 -- More customization options and their details can be found in the onedark.nvim repo

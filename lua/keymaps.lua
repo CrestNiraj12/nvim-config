@@ -24,3 +24,4 @@ set('n', '<leader>ba', ':bufdo bd<CR>', { noremap = true, silent = true, desc = 
 
 -- Save file
 set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true, desc = 'Save file' })
+set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true, desc = 'Save file' })
