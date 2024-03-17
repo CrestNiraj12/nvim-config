@@ -9,7 +9,7 @@ return {
 	keys = {
 		{ '<C-n>',      "<cmd>Neotree toggle position=right <CR>",                       desc = "Toggle Neo-tree" },
 		-- Focus --
-		{ '<leader>nf', "<cmd>Neotree focus <CR>",                                      desc = "Focus Neo-tree" },
+		{ '<leader>nf', "<cmd>Neotree focus position=right<CR>",                                      desc = "Focus Neo-tree" },
 		{ '<leader>nd', "<cmd>Neotree toggle position=right reveal_force_cwd=true <CR>", desc = "Toggle Neo-tree and reveal current file" },
 		{ '<leader>nb', "<cmd>Neotree toggle position=right source=buffers <CR>",        desc = "Toggle Neo-tree with buffer list" },
 		-- You can add more mappings as needed
