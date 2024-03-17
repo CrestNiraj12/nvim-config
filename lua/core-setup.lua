@@ -38,3 +38,7 @@ opt.undofile = true -- Save undo history to disk, allowing undo after closing an
 -- split window management
 opt.splitright = true -- Vertical splits will open to the right
 opt.splitbelow = true -- Horizontal splits will open below
+
+-- wrap lines
+-- :set wrap!
+opt.wrap = false
