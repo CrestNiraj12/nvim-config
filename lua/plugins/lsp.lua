@@ -74,7 +74,6 @@ return {
 					"jdtls",
 					"lua_ls",
 					"html",
-					"ruff_lsp",
 					"pyright",
 					"jsonls",
 					"rust_analyzer",
