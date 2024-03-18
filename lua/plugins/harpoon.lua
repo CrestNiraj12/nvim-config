@@ -8,11 +8,11 @@ return {
 		harpoon.setup({
 			-- Example configuration:
 			menu = {
-				width = 60, -- Adjust menu width if needed
+				width = 60,         -- Adjust menu width if needed
 			},
 		})
 
-		-- basic telescope configuration
+		-- Basic telescope configuration
 		local conf = require("telescope.config").values
 		local function toggle_telescope(harpoon_files)
 			local file_paths = {}
@@ -30,8 +30,24 @@ return {
 			}):find()
 		end
 
-		-- Keymaps for various Harpoon actions:
-		vim.keymap.set("n", "<C-e>", toggle_telescope, { desc = "Open Harpoon List" })                          -- Open list of harpooned files
-	end
+		-- Keymap to open the list of harpooned files with Telescope
+		vim.keymap.set("n", "<C-e>", toggle_telescope, { desc = "Open Harpoon List with Telescope" })
 
+		-- Additional Harpoon Keymaps
+		-- Mark the current file or toggle mark
+		vim.keymap.set('n', '<leader>hm', require('harpoon.mark').add_file, { desc = "Harpoon: Mark/Unmark File" })
+
+		-- Open the Harpoon menu directly
+		vim.keymap.set('n', '<leader>ha', require('harpoon.ui').toggle_quick_menu, { desc = "Harpoon: Toggle Menu" })
+
+		-- Navigate to the next and previous marks
+		vim.keymap.set('n', '<leader>hn', require('harpoon.ui').nav_next, { desc = "Harpoon: Next Mark" })
+		vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev, { desc = "Harpoon: Previous Mark" })
+
+		-- Direct navigation to specific marks using numbers
+		for i = 1, 4 do
+			vim.keymap.set('n', '<leader>h' .. i, function() require('harpoon.ui').nav_file(i) end,
+				{ desc = "Harpoon: Go to Mark " .. i })
+		end
+	end
 }
