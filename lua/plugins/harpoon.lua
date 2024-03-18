@@ -31,7 +31,8 @@ return {
 		end
 
 		-- Keymap to open the list of harpooned files with Telescope
-		vim.keymap.set("n", "<leader>ht",function() toggle_telescope(harpoon:list()) end, { desc = "Open Harpoon List with Telescope" })
+		vim.keymap.set("n", "<leader>ht", function() toggle_telescope(harpoon:list()) end,
+			{ desc = "Open Harpoon List with Telescope" })
 
 		-- Additional Harpoon Keymaps
 		-- Mark the current file or toggle mark
@@ -44,11 +45,5 @@ return {
 		-- Navigate to the next and previous marks
 		vim.keymap.set('n', '<leader>hn', function() harpoon.list():next() end, { desc = "Harpoon: Next Mark" })
 		vim.keymap.set('n', '<leader>hp', function() harpoon.list():prev() end, { desc = "Harpoon: Previous Mark" })
-
-		-- Direct navigation to specific marks using numbers
-		for i = 1, 4 do
-			vim.keymap.set('n', '<leader>h' .. i, function() harpoon.list():select(i) end,
-				{ desc = "Harpoon: Go to Mark " .. i })
-		end
 	end
 }
