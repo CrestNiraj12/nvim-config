@@ -43,7 +43,13 @@ return {
 		k.set("n", "<leader>fk", builtin.keymaps, {})
 		k.set("n", "<leader>fc", builtin.commands, {})
 		k.set("n", "<leader>fm", builtin.marks, {})
-		k.set("n", "<leader>fs", ':Telescope lsp_document_symbols<CR>', {})
-		k.set("n", "<leader>fr", ':Telescope lsp_references<CR>', {})
+		k.set("n", "<leader>ft", function() builtin.current_buffer_fuzzy_find({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		k.set("n", "<leader>fs", function() builtin.lsp_document_symbols({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		k.set("n", "<leader>fw", function() builtin.lsp_workspace_symbols({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		k.set("n", "<leader>fd", function() builtin.lsp_definitions({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		k.set("n", "<leader>fi", function() builtin.lsp_implementations({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		k.set("n", "<leader>fr", function() builtin.lsp_references({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		-- Registers
+		k.set("n", "<leader>fz", builtin.registers, {})
 	end
 }
