@@ -19,13 +19,15 @@
 16. trouble
 17. undotree
 19. wakatime
+20. dartls
+21. flutter-tools
 
 
 ## Configuration for my nvim setup
 
 
 ```
-git clone https://github.com/theArjun/my-nvim-config ~/.config/nvim
+git clone https://github.com/CrestNiraj12/nvim-config ~/.config/nvim
 ```
 
 ## Sessionizer
