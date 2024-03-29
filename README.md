@@ -21,10 +21,11 @@
 19. wakatime
 20. dartls
 21. flutter-tools
+22. copilot
+23. nvim-surround - To wrap selection with braces
 
 
 ## Configuration for my nvim setup
-
 
 ```
 git clone https://github.com/CrestNiraj12/nvim-config ~/.config/nvim
