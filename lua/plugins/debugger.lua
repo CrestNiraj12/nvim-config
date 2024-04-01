@@ -3,6 +3,17 @@ return {
   dependencies = {
     {
       "rcarriga/nvim-dap-ui",
+      dependencies = {
+        "nvim-neotest/nvim-nio",
+        {
+          "folke/neodev.nvim",
+          config = function()
+            require("neodev").setup({
+              library = { plugins = { "nvim-dap-ui" }, types = true },
+            })
+          end
+        }
+      },
       keys = {
         { "<leader>du", function() require("dapui").toggle({}) end, desc = "Toggle DAP UI" },
       },
@@ -29,7 +40,7 @@ return {
       config = function()
         require("mason-nvim-dap").setup({
           automatic_setup = true,
-          ensure_installed = { "debugpy" }, -- Add or remove debug adapters as needed
+          ensure_installed = { "python", "dart" }, -- Add or remove debug adapters as needed
         })
       end
     },
@@ -92,20 +103,35 @@ return {
     -- Set up the DAP adapter and configuration for Flutter
     dap.adapters.dart = {
       type = 'executable',
-      command = 'flutter',
+      command = 'dart',
       args = { 'debug_adapter' },
+    }
+
+    dap.adapters.flutter = {
+      type = 'executable',
+      command = 'flutter',
+      args = { 'debug_adapter' }
     }
 
     dap.configurations.dart = {
       {
         type = 'dart',
         request = 'launch',
-        name = 'Flutter Debug',
+        name = 'Dart Debug',
         flutterMode = 'debug',
         program = "${workspaceFolder}/lib/main.dart",
         cwd = "${workspaceFolder}",
         toolArgs = { '--flavor', 'dev' }, -- Specify the flavor here
       },
+      {
+        type = 'flutter',
+        request = 'launch',
+        name = 'Flutter Debug',
+        flutterMode = 'debug',
+        program = "${workspaceFolder}/lib/main.dart",
+        cwd = "${workspaceFolder}",
+        toolArgs = { '--flavor', 'dev' }, -- Specify the flavor here
+      }
     }
   end
 }
