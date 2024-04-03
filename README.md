@@ -19,10 +19,9 @@
 16. trouble
 17. undotree
 19. wakatime
-20. dartls
-21. flutter-tools
-22. copilot
-23. nvim-surround - To wrap selection with braces
+20. flutter-tools
+21. copilot
+22. nvim-surround - To wrap selection with braces
 
 
 ## Configuration for my nvim setup
