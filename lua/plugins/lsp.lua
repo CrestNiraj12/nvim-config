@@ -11,22 +11,10 @@ return {
 		dependencies = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'williamboman/mason-lspconfig.nvim' },
-			{
-				"nvimtools/none-ls.nvim",
-				config = function()
-					local null_ls = require("null-ls")
-					null_ls.setup({
-						sources = {
-							null_ls.builtins.code_actions.gitsigns,
-						},
-					})
-				end,
-			},
 		},
 		config = function()
 			-- lsp keybindings
 			vim.api.nvim_create_autocmd('LspAttach', {
-
 				callback = function(event)
 					local opts = { buffer = event.buf }
 

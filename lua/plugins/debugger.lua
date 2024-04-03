@@ -113,25 +113,5 @@ return {
       args = { 'debug_adapter' }
     }
 
-    dap.configurations.dart = {
-      {
-        type = 'flutter',
-        request = 'launch',
-        name = 'Flutter Debug',
-        flutterMode = 'debug',
-        program = "${workspaceFolder}/lib/main.dart",
-        cwd = "${workspaceFolder}",
-        toolArgs = { '--flavor', 'dev' },
-      },
-      {
-        type = 'flutter',
-        request = 'launch',
-        name = 'Flutter Debug Prod',
-        flutterMode = 'debug',
-        program = "${workspaceFolder}/lib/main.dart",
-        cwd = "${workspaceFolder}",
-        toolArgs = { '--flavor', 'prod' },
-      }
-    }
   end
 }
