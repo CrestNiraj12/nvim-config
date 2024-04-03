@@ -17,7 +17,7 @@ return {
           run_via_dap = true,
           exception_breakpoints = { "uncaught" },
           register_configurations = function(_)
-            require("dap.ext.vscode").load_launchjs()
+            -- require("dap.ext.vscode").load_launchjs()
           end
         },
         outline = { auto_open = false },

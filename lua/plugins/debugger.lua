@@ -115,22 +115,22 @@ return {
 
     dap.configurations.dart = {
       {
-        type = 'dart',
-        request = 'launch',
-        name = 'Dart Debug',
-        flutterMode = 'debug',
-        program = "${workspaceFolder}/lib/main.dart",
-        cwd = "${workspaceFolder}",
-        toolArgs = { '--flavor', 'dev' }, -- Specify the flavor here
-      },
-      {
         type = 'flutter',
         request = 'launch',
         name = 'Flutter Debug',
         flutterMode = 'debug',
         program = "${workspaceFolder}/lib/main.dart",
         cwd = "${workspaceFolder}",
-        toolArgs = { '--flavor', 'dev' }, -- Specify the flavor here
+        toolArgs = { '--flavor', 'dev' },
+      },
+      {
+        type = 'flutter',
+        request = 'launch',
+        name = 'Flutter Debug Prod',
+        flutterMode = 'debug',
+        program = "${workspaceFolder}/lib/main.dart",
+        cwd = "${workspaceFolder}",
+        toolArgs = { '--flavor', 'prod' },
       }
     }
   end
