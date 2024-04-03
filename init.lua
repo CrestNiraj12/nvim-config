@@ -31,7 +31,7 @@ require("lazy").setup(plugins)
 vim.cmd [[au FocusLost * silent! wa]]
 vim.cmd [[au BufLeave * silent! wa]]
 vim.cmd [[au InsertLeave * silent! wa]]
-vim.cmd [[colorscheme tokyonight-moon]]
+vim.cmd [[colorscheme tokyonight-night]]
 
 -- Autoreload file changes --
 vim.o.autoread = true
