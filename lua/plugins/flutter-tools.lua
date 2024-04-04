@@ -35,7 +35,26 @@ return {
                 program = "${workspaceFolder}/lib/main.dart",
                 cwd = "${workspaceFolder}",
                 toolArgs = { '--flavor', 'prod' },
+              },
+              {
+                type = 'flutter',
+                request = 'launch',
+                name = 'Flutter Profile Dev',
+                flutterMode = 'profile',
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
+                toolArgs = { '--flavor', 'dev' },
+              },
+              {
+                type = 'flutter',
+                request = 'launch',
+                name = 'Flutter Profile Prod',
+                flutterMode = 'profile',
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
+                toolArgs = { '--flavor', 'prod' },
               }
+
             }
             -- require("dap.ext.vscode").load_launchjs()
           end

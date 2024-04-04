@@ -34,9 +34,4 @@ set('n', '<leader>w', ':FlutterQuit<CR>', { noremap = true })
 -- Lazy Git Command
 set('n', '<leader>lg', ':LazyGit<CR>', { noremap = true })
 
-set("x", "(", "S)", { remap = true })
-set("x", ")", "S)", { remap = true })
-set("x", "[", "S]", { remap = true })
-set("x", "]", "S]", { remap = true })
-set("x", "{", "S}", { remap = true })
-set("x", "}", "S}", { remap = true })
+
