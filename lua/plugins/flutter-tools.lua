@@ -59,6 +59,9 @@ return {
             -- require("dap.ext.vscode").load_launchjs()
           end
         },
+        dev_tools = {
+          auto_open_browser = true,
+        },
         outline = { auto_open = false },
         decorations = {
           statusline = { device = true, app_version = true },

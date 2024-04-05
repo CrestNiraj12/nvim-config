@@ -23,7 +23,8 @@
 21. copilot
 22. nvim-surround - To wrap selection with braces
 23. git-blame
-
+24. which-key
+25. alpha-nvim
 
 ## Configuration for my nvim setup
 

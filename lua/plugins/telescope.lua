@@ -37,11 +37,12 @@ return {
 		-- Update these lines to include file_ignore_patterns in the options
 		k.set("n", "<leader>ff", function() builtin.find_files({ file_ignore_patterns = { "migrations/.*" } }) end, {})
 		k.set("n", "<leader>fg", function() builtin.live_grep({ file_ignore_patterns = { "migrations/.*" } }) end, {})
+		k.set("n", "<leader>fc", function() builtin.grep_string({ file_ignore_patterns = { "migrations/.*" } }) end, {})
 		k.set("n", "<leader>fb", builtin.buffers, {})
 		k.set("n", "<leader>fh", builtin.help_tags, {})
 		k.set("n", "<leader>fo", builtin.oldfiles, {})
 		k.set("n", "<leader>fk", builtin.keymaps, {})
-		k.set("n", "<leader>fc", builtin.commands, {})
+		k.set("n", "<leader>fcc", builtin.commands, {})
 		k.set("n", "<leader>fm", builtin.marks, {})
 		k.set("n", "<leader>ft", function() builtin.current_buffer_fuzzy_find({ file_ignore_patterns = { "migrations/.*" } }) end, {})
 		k.set("n", "<leader>fs", function() builtin.lsp_document_symbols({ file_ignore_patterns = { "migrations/.*" } }) end, {})
