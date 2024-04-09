@@ -69,17 +69,22 @@ return {
         type = "python",
         request = "launch",
         name = "Launch file",
-        program = "${file}",
+        program = function ()
+          local cwd = vim.fn.getcwd()
+          return cwd .. '/run_server.py'
+        end,
         pythonPath = function()
           -- Automatically select the Python interpreter based on the project's environment
           -- Example for virtualenv or any other environment tool
-          local cwd = vim.fn.getcwd()
-          if vim.fn.filereadable(cwd .. "/.venv/bin/python") == 1 then
-            return cwd .. "/.venv/bin/python"
+          if vim.fn.executable("~/soudan/bin/python") == 1 then
+            return "~/soudan/bin/python"
           else
             return vim.fn.exepath("python")
           end
         end,
+        env = {
+          DJANGO_SETTINGS_MODULE = "soudanapi.settings.local"
+        }
       },
       {
         type = 'python',
@@ -112,6 +117,5 @@ return {
       command = 'flutter',
       args = { 'debug_adapter' }
     }
-
   end
 }

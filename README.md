@@ -25,6 +25,7 @@
 23. git-blame
 24. which-key
 25. alpha-nvim
+26. black-nvim
 
 ## Configuration for my nvim setup
 

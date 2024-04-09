@@ -63,9 +63,6 @@ return {
           auto_open_browser = true,
         },
         outline = { auto_open = false },
-        decorations = {
-          statusline = { device = true, app_version = true },
-        },
         widget_guides = { enabled = true, debug = true },
         dev_log = {
           enabled = true,
@@ -84,14 +81,14 @@ return {
             updateImportsOnRename = true,
             completeFunctionCalls = true,
             enableSnippets = true,
+            analysisExcludedFolders = {
+              "build",
+              "android",
+              "ios",
+            }
           },
         },
       })
-      function _G.statusLine()
-        return vim.g.flutter_tools_decorations.app_version
-      end
-
-      vim.opt.statusline = '%!v:statusLine()'
     end
   },
 }
