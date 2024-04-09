@@ -84,6 +84,9 @@ return {
         end,
         env = {
           DJANGO_SETTINGS_MODULE = "soudanapi.settings.local"
+        },
+        autoReload = {
+          enable = true,
         }
       },
       {

@@ -83,7 +83,7 @@ return {
                 --- This is retrieved from the Sourcery website and must be
                 --- provided by each user. The extension must provide a
                 --- configuration option for the user to provide this value.
-                token = "user_4CIyGQYpf_iL2DWjcocQEG3LipL_rzQeuFPXZa3CsPdapMfrcJdyR1bvbZs",
+                token = os.getenv('SOURCERY_TOKEN'),
 
                 --- The extension's name and version as defined by the extension.
                 extension_version = 'vim.lsp',

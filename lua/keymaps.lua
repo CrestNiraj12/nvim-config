@@ -31,7 +31,12 @@ set('n', '<leader>m', ':FlutterRestart<CR>', { noremap = true })
 set('n', '<leader>r', ':FlutterReload<CR>', { noremap = true })
 set('n', '<leader>w', ':FlutterQuit<CR>', { noremap = true })
 
+-- DAP repl toggle
+set('n', '<leader>dr', ':DapToggleRepl<CR>', { noremap = true })
+
 -- Lazy Git Command
 set('n', '<leader>lg', ':LazyGit<CR>', { noremap = true })
+set('n', '<Right>', 'zL', { noremap = true })
+set('n', '<Left>', 'zH', { noremap = true })
 
 
