@@ -47,3 +47,6 @@ set('n', '+', '<C-w>+', { noremap = true, desc = 'Increase split size' })
 set('n', '_', '<C-w>-', { noremap = true, desc = 'Decrease split size' })
 set('n', '-', '<C-w><', { noremap = true, desc = 'Increase split width' })
 set('n', '=', '<C-w>>', { noremap = true, desc = 'Decrease split width' })
+
+-- Oil
+set('n', 'p', '<CMD>Oil<CR>', { desc = "Open parent directory" })
