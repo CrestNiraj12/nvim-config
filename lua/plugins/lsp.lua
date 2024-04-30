@@ -38,10 +38,31 @@ return {
 
           -- override defaults from lsp_zero
           vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-          -- code formatting
-          vim.keymap.set("n", "<C-s>", function()
-            vim.lsp.buf.format({})
-          end)
+
+          -- Create an augroup to manage autocmds
+          local dart_augroup = vim.api.nvim_create_augroup("DartOrganizeAndFormat", { clear = true })
+
+          -- Define a function to organize imports and format
+          local function organize_and_format_dart()
+            -- Request code action to organize imports
+            vim.lsp.buf.code_action({
+              context = { only = { "source.organizeImports" } },
+              apply = true
+            })
+
+            -- Format the buffer
+            vim.lsp.buf.format({ async = false })
+          end
+
+          -- Setup the autocmd for organizing and formatting on .dart files save
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = dart_augroup,
+            pattern = "*.dart",
+            callback = organize_and_format_dart
+          })
+
+          -- Bind the organize and format function to <C-s> keymap
+          vim.keymap.set('n', '<C-s>', organize_and_format_dart, { desc = 'Format and Organize Imports' })
         end
       })
 

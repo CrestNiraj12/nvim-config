@@ -65,7 +65,7 @@ return {
         outline = { auto_open = false },
         widget_guides = { enabled = true, debug = true },
         dev_log = {
-          enabled = true,
+          enabled = false,
           notify_errors = true,
           open_cmd = "tabedit",
         },
@@ -85,6 +85,7 @@ return {
               "build",
               "android",
               "ios",
+              "~/.pub-cache"
             }
           },
         },
