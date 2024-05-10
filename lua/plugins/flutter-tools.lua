@@ -11,7 +11,7 @@ return {
     config = function()
       require("flutter-tools").setup({
         fvm = true,
-        flutter_lookup_cmd = "asdf where flutter",
+        flutter_lookup_cmd = "dirname $(which flutter)",
         debugger = {
           enabled = true,
           run_via_dap = true,
