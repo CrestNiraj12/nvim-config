@@ -39,16 +39,15 @@ return {
           -- override defaults from lsp_zero
           vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
-          -- Create an augroup to manage autocmds
-          local dart_augroup = vim.api.nvim_create_augroup("DartOrganizeAndFormat", { clear = true })
-
           -- Define a function to organize imports and format
           local function organize_and_format_dart()
             -- Request code action to organize imports
-            vim.lsp.buf.code_action({
-              context = { only = { "source.organizeImports" } },
-              apply = true
-            })
+            if vim.bo.filetype == 'dart' then
+              vim.lsp.buf.code_action({
+                context = { only = { "source.organizeImports" } },
+                apply = true
+              })
+            end
 
             -- Format the buffer
             vim.lsp.buf.format({ async = false })
@@ -56,8 +55,6 @@ return {
 
           -- Setup the autocmd for organizing and formatting on .dart files save
           vim.api.nvim_create_autocmd("BufWritePre", {
-            group = dart_augroup,
-            pattern = "*.dart",
             callback = organize_and_format_dart
           })
 
@@ -94,6 +91,7 @@ return {
           "taplo",
           "marksman",
           "sourcery",
+          "tsserver",
         },
         handlers = {
           default_setup,
