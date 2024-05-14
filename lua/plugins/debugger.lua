@@ -56,6 +56,9 @@ return {
     { "<leader>dq", function() require("dap").terminate() end,         desc = "Terminate Debug Session" },
   },
   config = function()
+    vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapStopped', { text = '➜', texthl = '', linehl = '', numhl = '' })
+
     local dap = require("dap")
     dap.adapters.python = {
       type = "executable",
@@ -69,7 +72,7 @@ return {
         type = "python",
         request = "launch",
         name = "Launch file",
-        program = function ()
+        program = function()
           local cwd = vim.fn.getcwd()
           return cwd .. '/run_server.py'
         end,
