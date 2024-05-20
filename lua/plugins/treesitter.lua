@@ -10,7 +10,10 @@ return {
           "go", "dart", "typescript", "python",
           "vimdoc", "vim", -- Removed duplicate "dart"
         },
-        highlight = { enable = true },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
         indent = {
           enable = true,
           disable = { "dart" }

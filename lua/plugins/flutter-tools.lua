@@ -10,8 +10,18 @@ return {
     },
     config = function()
       require("flutter-tools").setup({
+        ui = {
+          border = "rounded",
+          notification_style = 'native',
+        },
+        decorations = {
+          statusline = {
+            app_version = true,
+            device = true,
+          }
+        },
         fvm = true,
-        flutter_lookup_cmd = "dirname $(which flutter)",
+        flutter_path = "/Users/niraj.shrestha/Documents/flutter/bin/flutter",
         debugger = {
           enabled = true,
           run_via_dap = true,
@@ -25,12 +35,20 @@ return {
                 flutterMode = 'debug',
                 program = "${workspaceFolder}/lib/main.dart",
                 cwd = "${workspaceFolder}",
+              },
+              {
+                type = 'flutter',
+                request = 'launch',
+                name = 'Flutter DEV Debug',
+                flutterMode = 'debug',
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
                 toolArgs = { '--flavor', 'dev' },
               },
               {
                 type = 'flutter',
                 request = 'launch',
-                name = 'Flutter Debug Prod',
+                name = 'Flutter DEV Debug Prod',
                 flutterMode = 'debug',
                 program = "${workspaceFolder}/lib/main.dart",
                 cwd = "${workspaceFolder}",
