@@ -16,6 +16,7 @@ return {
         lualine_b = { { 'diagnostics', sources = { 'nvim_diagnostic' } } },
         lualine_c = {
           'filename',
+          'branch',
           'g:flutter_tools_decorations.app_version',
           'g:flutter_tools_decorations.device',
         },
