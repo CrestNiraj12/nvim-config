@@ -54,13 +54,10 @@ return {
             end
 
             -- Format the buffer
-            vim.lsp.buf.format({ async = false })
+            local _, _ = pcall(function()
+              vim.lsp.buf.format({ async = false })
+            end)
           end
-
-          -- Setup the autocmd for organizing and formatting on .dart files save
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            callback = organize_and_format_dart
-          })
 
           -- Bind the organize and format function to <C-s> keymap
           vim.keymap.set('n', '<C-s>', organize_and_format_dart, { desc = 'Format and Organize Imports' })
