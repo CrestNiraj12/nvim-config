@@ -30,7 +30,7 @@ opt.exrc = true
 
 -- improved search
 opt.ignorecase = true -- Ignore case when searching...
-opt.smartcase = true -- ...unless there is a capital letter in the query
+opt.smartcase = true  -- ...unless there is a capital letter in the query
 
 -- undo history
 opt.undofile = true -- Save undo history to disk, allowing undo after closing and reopening files
@@ -42,3 +42,18 @@ opt.splitbelow = true -- Horizontal splits will open below
 -- wrap lines
 -- :set wrap!
 opt.wrap = false
+
+
+-- Function to set indent width for specific file types
+local function set_indent_width(filetypes, width)
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = filetypes,
+    callback = function()
+      vim.opt_local.shiftwidth = width
+      vim.opt_local.tabstop = width
+    end,
+  })
+end
+
+-- Set indent width to 4 for JSON, YAML, and XML files
+set_indent_width({ "json", "yaml", "xml" }, 4)

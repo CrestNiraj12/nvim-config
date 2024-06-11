@@ -1,6 +1,6 @@
 return {
   "goolord/alpha-nvim",
-  dependencies = { "kyazdani42/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local status_ok, alpha = pcall(require, "alpha")
     if not status_ok then
