@@ -11,6 +11,11 @@ return {
   {
     'neovim/nvim-lspconfig',
     cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+    opts = {
+      servers = {
+        dartls = {},
+      }
+    },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
@@ -20,7 +25,9 @@ return {
       -- lsp keybindings
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
-          local opts = { buffer = event.buf }
+          local opts = {
+            buffer = event.buf
+          }
 
           -- these will be buffer-local keybindings
           -- because they only work if you have an active language server

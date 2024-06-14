@@ -31,6 +31,8 @@ set('n', '<leader>m', ':FlutterRestart<CR>', { noremap = true })
 set('n', '<leader>r', ':FlutterReload<CR>', { noremap = true })
 set('n', '<leader>w', ':FlutterQuit<CR>', { noremap = true })
 
+set('n', '<leader>bg', ':Telescope git_bcommits<CR>', { noremap = true })
+
 -- DAP repl toggle
 set('n', '<leader>dr', ':DapToggleRepl<CR>', { noremap = true })
 set('n', '<leader>dr', ':DapToggle<CR>', { noremap = true })
