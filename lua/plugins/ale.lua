@@ -23,7 +23,7 @@ return {
 
     -- Example: Enable ALE fixers
     vim.g.ale_fixers = {
-      python = { 'black', 'ruff_format', 'isort' },
+      -- python = { 'black', 'ruff_format', 'isort' },
       dart = { 'dartfmt' },
       typescript = { 'eslint' },
       typescriptreact = { 'eslint' },

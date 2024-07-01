@@ -8,7 +8,7 @@ return {
         ensure_installed = {
           "c", "lua", "javascript", "html",
           "go", "dart", "typescript", "python",
-          "vimdoc", "vim", -- Removed duplicate "dart"
+          "vimdoc", "vim", 'markdown', 'markdown_inline'
         },
         highlight = {
           enable = true,
