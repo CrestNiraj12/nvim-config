@@ -25,7 +25,7 @@ return {
         debugger = {
           enabled = true,
           run_via_dap = true,
-          exception_breakpoints = {},
+          exception_breakpoints = { "uncaught" },
           register_configurations = function(_)
             require("dap").configurations.dart = {
               {
@@ -41,6 +41,15 @@ return {
                 request = 'launch',
                 name = 'Flutter DEV Debug',
                 flutterMode = 'debug',
+                program = "${workspaceFolder}/lib/main.dart",
+                cwd = "${workspaceFolder}",
+                toolArgs = { '--flavor', 'dev' },
+              },
+              {
+                type = 'flutter',
+                request = 'launch',
+                name = 'Flutter DEV Release',
+                flutterMode = 'release',
                 program = "${workspaceFolder}/lib/main.dart",
                 cwd = "${workspaceFolder}",
                 toolArgs = { '--flavor', 'dev' },
