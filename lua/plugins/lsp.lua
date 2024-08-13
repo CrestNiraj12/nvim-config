@@ -11,11 +11,6 @@ return {
   {
     'neovim/nvim-lspconfig',
     cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
-    opts = {
-      servers = {
-        dartls = {},
-      }
-    },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
