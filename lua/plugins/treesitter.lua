@@ -7,7 +7,7 @@ return {
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "c", "lua", "javascript", "html",
-          "go", "dart", "typescript", "python",
+          "go", "typescript", "python",
           "vimdoc", "vim", 'markdown', 'markdown_inline'
         },
         highlight = {

@@ -13,8 +13,8 @@ return {
     vim.g.ale_linters = {
       python = { 'flake8', 'mypy' },
       dart = { 'dartanalyzer' },
-      typescript = { 'tsserver', 'eslint' },
-      typescriptreact = { 'tsserver', 'eslint' },
+      typescript = { 'eslint' },
+      typescriptreact = { 'eslint' },
       json = { 'jsonls' },
       yaml = { 'yamlls' },
       xml = { 'lemminx' }

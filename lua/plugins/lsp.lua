@@ -13,7 +13,7 @@ return {
     cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'saghen/blink.cmp' },
       { 'williamboman/mason-lspconfig.nvim' },
     },
     config = function()
@@ -47,18 +47,21 @@ return {
 
           -- Define a function to organize imports and format
           local function organize_and_format_dart()
+            -- Format the buffer
+            local _, _ = pcall(function()
+              vim.lsp.buf.format()
+            end)
+
             -- Request code action to organize imports
             if vim.bo.filetype == 'dart' then
               vim.lsp.buf.code_action({
-                context = { only = { "source.organizeImports" } },
+                context = {
+                  only = { "source.organizeImports" },
+                  diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
+                },
                 apply = true
               })
             end
-
-            -- Format the buffer
-            local _, _ = pcall(function()
-              vim.lsp.buf.format({ async = false })
-            end)
           end
 
           -- Bind the organize and format function to <C-s> keymap
@@ -69,9 +72,9 @@ return {
       -- hover borders
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
-      local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      local on_attach = function(client, bufnr)
+      local on_attach = function(_, bufnr)
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
       end
 
@@ -94,7 +97,6 @@ return {
           "taplo",
           "marksman",
           "sourcery",
-          "tsserver",
         },
         handlers = {
           default_setup,
@@ -132,47 +134,47 @@ return {
               },
             })
           end,
-          tsserver = function()
-            require('lspconfig').tsserver.setup({
-              on_attach = function(client, bufnr)
-                local ts_utils = require('nvim-lsp-ts-utils')
-                ts_utils.setup({
-                  -- specify preferences for import sorting and other options
-                  import_all_timeout = 5000, -- milliseconds
-                  import_all_priorities = {
-                    buffers = 4,             -- loaded buffer names
-                    buffer_content = 3,      -- loaded buffer content
-                    local_files = 2,         -- git files or files with relative path markers
-                    same_file = 1,           -- add to existing import statement
-                  },
-                  import_all_scan_buffers = 100,
-                  import_all_select_source = false,
-                  always_organize_imports = true,
-                  eslint_enable_diagnostics = true,
-                  complete_parens = true,
-                  eslint_enable_code_actions = true,
-                  enable_formatting = true,
-                  formatter = 'prettier',
-                  eslint_bin = 'eslint_d',
-                })
-                ts_utils.setup_client(client)
-
-                local opts = { silent = true }
-                vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
-                vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspRenameFile<CR>', opts)
-                vim.api.nvim_buf_set_keymap(bufnr, 'n', 'go', ':TSLspImportAll<CR>', opts)
-
-                -- Auto format on save
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                  buffer = bufnr,
-                  callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                    ts_utils.organize_imports_sync()
-                  end,
-                })
-              end,
-            })
-          end
+          -- tsserver = function()
+          --   require('lspconfig').tsserver.setup({
+          --     on_attach = function(client, bufnr)
+          --       local ts_utils = require('nvim-lsp-ts-utils')
+          --       ts_utils.setup({
+          --         -- specify preferences for import sorting and other options
+          --         import_all_timeout = 5000, -- milliseconds
+          --         import_all_priorities = {
+          --           buffers = 4,             -- loaded buffer names
+          --           buffer_content = 3,      -- loaded buffer content
+          --           local_files = 2,         -- git files or files with relative path markers
+          --           same_file = 1,           -- add to existing import statement
+          --         },
+          --         import_all_scan_buffers = 100,
+          --         import_all_select_source = false,
+          --         always_organize_imports = true,
+          --         eslint_enable_diagnostics = true,
+          --         complete_parens = true,
+          --         eslint_enable_code_actions = true,
+          --         enable_formatting = true,
+          --         formatter = 'prettier',
+          --         eslint_bin = 'eslint_d',
+          --       })
+          --       ts_utils.setup_client(client)
+          --
+          --       local opts = { silent = true }
+          --       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
+          --       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspRenameFile<CR>', opts)
+          --       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'go', ':TSLspImportAll<CR>', opts)
+          --
+          --       -- Auto format on save
+          --       vim.api.nvim_create_autocmd("BufWritePre", {
+          --         buffer = bufnr,
+          --         callback = function()
+          --           vim.lsp.buf.format({ bufnr = bufnr })
+          --           ts_utils.organize_imports_sync()
+          --         end,
+          --       })
+          --     end,
+          --   })
+          -- end
         },
         automatic_installation = true,
       })
