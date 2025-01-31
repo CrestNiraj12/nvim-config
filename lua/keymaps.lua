@@ -23,7 +23,7 @@ local flutter_cmd = ":FlutterRun -t lib/main.dart"
 set('n', '<F1>', flutter_cmd .. ' --flavor dev<CR>', { noremap = true })
 
 -- Map F2 to run the 'paid' flavor
-set('n', '<F5>',  flutter_cmd .. ' --flavor prod<CR>', { noremap = true })
+set('n', '<F5>', flutter_cmd .. ' --flavor prod<CR>', { noremap = true })
 
 set('n', '<leader>d', ':FlutterDevices<CR>', { noremap = true })
 set('n', '<leader>fe', ':FlutterEmulators<CR>', { noremap = true })
@@ -52,3 +52,4 @@ set('n', '=', '<C-w>>', { noremap = true, desc = 'Decrease split width' })
 
 -- Oil
 set('n', 'n', '<CMD>Oil<CR>', { desc = "Open parent directory" })
+set("n", "<leader>xl", "<cmd>lua require('dap.repl').clear()<CR>", { noremap = true, silent = true })
