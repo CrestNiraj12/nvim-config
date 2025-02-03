@@ -90,6 +90,7 @@ return {
         },
         outline = { auto_open = false },
         widget_guides = { enabled = false, debug = false, },
+        root_patterns = { ".git", "pubspec.yaml" },
         dev_log = {
           enabled = false,
           notify_errors = true,

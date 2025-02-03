@@ -17,6 +17,41 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
     },
     config = function()
+      local devices = require('user.flutter.devices')
+      vim.api.nvim_create_autocmd("BufReadPost", {
+        pattern = "*.dart",
+        callback = function(event)
+          local buf = event.buf;
+
+          devices.fetch(function()
+            vim.notify("Devices fetched!")
+          end)
+
+          vim.api.nvim_create_user_command('FlutterDevices', function()
+            if vim.tbl_isempty(devices.get_devices()) then
+              devices.fetch(function()
+                vim.notify("Devices refreshed!\n" .. vim.inspect(devices.get_devices()))
+              end)
+            else
+              print(vim.inspect(devices.get_devices()))
+            end
+          end, { desc = "Show cached Flutter devices" })
+
+          local flutter_telescope = require('user.flutter.telescope')
+          vim.keymap.set('n', '<leader>d', flutter_telescope.picker, {
+            buffer = buf,
+            desc = "Select Flutter device"
+          })
+
+          vim.keymap.set('n', '<leader>fR', function()
+            vim.notify("Refreshing devices!")
+            devices.fetch(function()
+              vim.notify("Devices refreshed!")
+            end)
+          end, { buffer = buf, desc = "Refresh Flutter devices" })
+        end
+      })
+
       -- lsp keybindings
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(event)
@@ -39,17 +74,14 @@ return {
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
           vim.keymap.set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-          vim.keymap.set({ 'n', 'x' }, '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
-          -- override defaults from lsp_zero
-          vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-
-          -- Define a function to organize imports and format
-          local function organize_and_format_dart()
+          -- Define a function to organize imports and formatlsp.
+          local function organize_and_format()
             -- Format the buffer
             local _, _ = pcall(function()
-              vim.lsp.buf.format()
+              vim.lsp.buf.format({ async = true })
             end)
 
             -- Request code action to organize imports
@@ -65,23 +97,19 @@ return {
           end
 
           -- Bind the organize and format function to <C-s> keymap
-          vim.keymap.set('n', '<C-s>', organize_and_format_dart, { desc = 'Format and Organize Imports' })
+          vim.keymap.set('n', '<C-s>', organize_and_format, { desc = 'Format and Organize Imports' })
         end
       })
+
 
       -- hover borders
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
       local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      local on_attach = function(_, bufnr)
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      end
-
       local default_setup = function(server)
         require('lspconfig')[server].setup({
           capabilities = lsp_capabilities,
-          on_attach = on_attach,
         })
       end
 
