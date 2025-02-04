@@ -1,3 +1,5 @@
+require('user.flutter.debug')
+
 return {
   {
     'akinsho/flutter-tools.nvim',
@@ -94,7 +96,12 @@ return {
         dev_log = {
           enabled = true,
           notify_errors = true,
-          open_cmd = "tabedit",
+          open_cmd = "15split",
+          filter = function(line)
+            if line:match("^D/EGL") then
+              return false
+            end
+          end,
         },
         lsp = {
           color = {

@@ -123,5 +123,11 @@ return {
       command = 'flutter',
       args = { 'debug_adapter' }
     }
+
+    vim.cmd([[
+      highlight DapUILogInfo guifg=#6a9955
+      highlight DapUILogWarn guifg=#dcdcaa
+      highlight DapUILogError guifg=#f44747
+    ]])
   end
 }

@@ -30,6 +30,8 @@ set('n', '<leader>fe', ':FlutterEmulators<CR>', { noremap = true })
 set('n', '<leader>m', ':FlutterRestart<CR>', { noremap = true })
 set('n', '<leader>r', ':FlutterReload<CR>', { noremap = true })
 set('n', '<leader>w', ':FlutterQuit<CR>', { noremap = true })
+set('n', '<leader>lc', ':FlutterLogClear<CR>', { noremap = true })
+set('n', '<leader>lt', ':FlutterLogToggle<CR>', { noremap = true })
 
 set('n', '<leader>bg', ':Telescope git_bcommits<CR>', { noremap = true })
 

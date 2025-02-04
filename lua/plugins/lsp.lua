@@ -20,40 +20,43 @@ return {
     },
     config = function()
       local devices = require('user.flutter.devices')
-      vim.api.nvim_create_autocmd("BufReadPost", {
-        pattern = "*.dart",
-        callback = function(event)
-          local buf = event.buf;
+      if (not isInitialized) then
+        vim.api.nvim_create_autocmd("BufReadPost", {
+          pattern = "*.dart",
+          callback = function(event)
+            local buf = event.buf;
 
-          devices.fetch(function()
-            vim.notify("Devices fetched!")
-          end)
-
-          vim.api.nvim_create_user_command('FlutterDevices', function()
-            if vim.tbl_isempty(devices.get_devices()) then
-              devices.fetch(function()
-                vim.notify("Devices refreshed!\n" .. vim.inspect(devices.get_devices()))
-              end)
-            else
-              print(vim.inspect(devices.get_devices()))
-            end
-          end, { desc = "Show cached Flutter devices" })
-
-          local flutter_telescope = require('user.flutter.telescope')
-          vim.keymap.set('n', '<leader>d', flutter_telescope.picker, {
-            buffer = buf,
-            desc = "Select Flutter device"
-          })
-
-          vim.keymap.set('n', '<leader>fR', function()
-            vim.notify("Refreshing devices!")
             devices.fetch(function()
-              vim.notify("Devices refreshed!")
+              vim.notify("Devices fetched!")
             end)
-          end, { buffer = buf, desc = "Refresh Flutter devices" })
-          isInitialized = true
-        end
-      })
+
+            vim.api.nvim_create_user_command('FlutterDevices', function()
+              if vim.tbl_isempty(devices.get_devices()) then
+                devices.fetch(function()
+                  vim.notify("Devices refreshed!\n" .. vim.inspect(devices.get_devices()))
+                end)
+              else
+                print(vim.inspect(devices.get_devices()))
+              end
+            end, { desc = "Show cached Flutter devices" })
+
+            local flutter_telescope = require('user.flutter.telescope')
+            vim.keymap.set('n', '<leader>d', flutter_telescope.picker, {
+              buffer = buf,
+              desc = "Select Flutter device"
+            })
+
+            vim.keymap.set('n', '<leader>fR', function()
+              vim.notify("Refreshing devices!")
+              devices.fetch(function()
+                vim.notify("Devices refreshed!")
+              end)
+            end, { buffer = buf, desc = "Refresh Flutter devices" })
+
+            isInitialized = true
+          end
+        })
+      end
 
       -- lsp keybindings
       vim.api.nvim_create_autocmd('LspAttach', {
