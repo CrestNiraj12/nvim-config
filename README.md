@@ -26,6 +26,7 @@
 24. which-key
 25. alpha-nvim
 26. black-nvim
+27. log-highlight
 
 ## Configuration for my nvim setup
 
