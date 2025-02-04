@@ -92,7 +92,7 @@ return {
         widget_guides = { enabled = false, debug = false, },
         root_patterns = { ".git", "pubspec.yaml" },
         dev_log = {
-          enabled = false,
+          enabled = true,
           notify_errors = true,
           open_cmd = "tabedit",
         },

@@ -1,3 +1,5 @@
+local isInitialized = false
+
 return {
   {
     'jose-elias-alvarez/nvim-lsp-ts-utils',
@@ -49,6 +51,7 @@ return {
               vim.notify("Devices refreshed!")
             end)
           end, { buffer = buf, desc = "Refresh Flutter devices" })
+          isInitialized = true
         end
       })
 
@@ -88,8 +91,7 @@ return {
             if vim.bo.filetype == 'dart' then
               vim.lsp.buf.code_action({
                 context = {
-                  only = { "source.organizeImports" },
-                  diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
+                  only = { "source.organizeImports", },
                 },
                 apply = true
               })
