@@ -1,5 +1,3 @@
-require('user.flutter.debug')
-
 return {
   {
     'akinsho/flutter-tools.nvim',
@@ -101,6 +99,7 @@ return {
             if line:match("^D/EGL") then
               return false
             end
+            return true
           end,
         },
         lsp = {
