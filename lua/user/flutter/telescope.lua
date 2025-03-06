@@ -1,5 +1,6 @@
 local M = {}
 local devices = require('user.flutter.devices')
+local actions = require('telescope.actions')
 
 function M.picker()
   local c_devices = devices.get_devices();
@@ -25,15 +26,15 @@ function M.picker()
   end
 
   local mappings = function(prompt_bufnr, map)
-    map('i', '<CR>', function()
+    actions.select_default:replace(function()
       local selection = require('telescope.actions.state').get_selected_entry()
-      require('telescope.actions').close(prompt_bufnr)
+      actions.close(prompt_bufnr)
       vim.schedule(function()
         vim.cmd("FlutterRun -d " .. selection.value)
       end)
     end)
 
-    map('i', '<C-r>', function()
+    map('n', '<C-r>', function()
       devices.fetch(function()
         require('telescope.actions')._close(prompt_bufnr, true)
         vim.schedule(M.picker)
