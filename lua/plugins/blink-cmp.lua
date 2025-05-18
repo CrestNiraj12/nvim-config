@@ -6,12 +6,22 @@ return {
     keymap = {
       preset = 'default',
       ["<C-Space>"] = { 'show', 'fallback' },
-      ["<C-k>"] = { 'select_prev', 'fallback' },   -- previous suggestion
-      ["<C-j>"] = { 'select_next', 'fallback' },   -- next suggestion
+      ["<C-k>"] = { 'select_prev', 'fallback' }, -- previous suggestion
+      ["<C-j>"] = { 'select_next', 'fallback' }, -- next suggestion
       ["<CR>"] = { 'accept', 'fallback' },
     },
     sources = {
-      cmdline = {},   -- disable command line completions
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      providers = {
+        snippets = {
+          opts = {
+            search_paths = {
+              vim.fn.stdpath("config") .. "/snippets",
+              vim.fn.stdpath("data") .. "/lazy/friendly-snippets",
+            },
+          },
+        },
+      },
     },
     signature = {
       enabled = true,
