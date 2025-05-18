@@ -23,7 +23,7 @@ return {
         flutter_path = "/Users/niraj.shrestha/flutter/bin/flutter",
         debugger = {
           enabled = true,
-          run_via_dap = true,
+          run_via_dap = false,
           exception_breakpoints = {},
           register_configurations = function(_)
             require("dap").configurations.dart = {

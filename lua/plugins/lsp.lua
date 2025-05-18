@@ -94,6 +94,7 @@ return {
             if vim.bo.filetype == 'dart' then
               vim.lsp.buf.code_action({
                 context = {
+                  diagnostics = {},
                   only = { "source.organizeImports", },
                 },
                 apply = true

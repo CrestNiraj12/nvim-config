@@ -116,6 +116,9 @@ return {
       type = 'executable',
       command = 'dart',
       args = { 'debug_adapter' },
+      options = {
+        detached = false,
+      },
     }
 
     dap.adapters.flutter = {
