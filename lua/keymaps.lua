@@ -55,3 +55,15 @@ set('n', '=', '<C-w>>', { noremap = true, desc = 'Decrease split width' })
 -- Oil
 set('n', 'n', '<CMD>Oil<CR>', { desc = "Open parent directory" })
 set("n", "<leader>xl", "<cmd>lua require('dap.repl').clear()<CR>", { noremap = true, silent = true })
+
+set("n", "<leader>sw", function()
+  require("spectre").open_visual({ select_word = true })
+end, { desc = "Search current word" })
+
+set("v", "<leader>sw", function()
+  require("spectre").open_visual()
+end, { desc = "Search selection" })
+
+set("n", "<leader>sp", function()
+  require("spectre").open_file_search({ select_word = true })
+end, { desc = "Search in current file" })

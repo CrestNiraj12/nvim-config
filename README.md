@@ -1,5 +1,8 @@
 # My neovim setup
 
+## Important tools for search and replace:
+brew install ripgrep gnu-sed
+
 ## Plugins used
 1. autopairs - A super powerful autopair plugin for Neovim that supports multiple characters. 
 2. barbar - A tabline plugin with re-orderable, auto-sizing, clickable tabs, icons, nice highlighting, sort-by commands and a magic jump-to-buffer mode.
