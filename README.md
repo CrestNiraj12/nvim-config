@@ -1,7 +1,9 @@
 # My neovim setup
 
 ## Important tools for search and replace:
+```
 brew install ripgrep gnu-sed
+```
 
 ## Plugins used
 1.	nvim-autopairs – Automatically inserts matching brackets, quotes, etc., to speed up coding.
