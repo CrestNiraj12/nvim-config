@@ -12,6 +12,7 @@ return {
         },
         highlight = {
           enable = true,
+          disable = { "dart" },
           additional_vim_regex_highlighting = false,
         },
         indent = {

@@ -119,7 +119,8 @@ return {
               "build",
               "android",
               "ios",
-              "~/.pub-cache"
+              "~/.pub-cache",
+              ".dart_tool"
             }
           },
         },
