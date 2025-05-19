@@ -38,6 +38,7 @@ brew install ripgrep gnu-sed
 30. ale - Linting and fixing plugin 
 31. blink-cmp.nvim - Completion plugin 
 32. bufferline - A snazzy 💅 buffer line
+33. nvim-treesitter-context - Shows the context of the currently visible buffer contents. 
 
 ## Configuration for my nvim setup
 
