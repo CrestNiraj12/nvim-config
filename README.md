@@ -33,6 +33,11 @@ brew install ripgrep gnu-sed
 25.	nvim-spectre – Search and replace tool with a nice UI.
 26.	smear-cursor.nvim – Animate the cursor with a smear effect for enhanced visual feedback.
 27. friendly-snippets - Community maintained snippets for various programming languages
+28. zen-mode - Create a distraction-free coding environment 
+29. wilder - A more adventurous wildmenu
+30. ale - Linting and fixing plugin 
+31. blink-cmp.nvim - Completion plugin 
+32. bufferline - A snazzy 💅 buffer line
 
 ## Configuration for my nvim setup
 
