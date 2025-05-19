@@ -155,6 +155,9 @@ return {
             require('lspconfig').lua_ls.setup({
               settings = {
                 Lua = {
+                  runtime = {
+                    version = 'LuaJIT', -- Neovim uses LuaJIT
+                  },
                   diagnostics = {
                     globals = { "vim" },
                   },
@@ -163,6 +166,10 @@ return {
                       [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                       [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
                     },
+                    checkThirdParty = false,
+                  },
+                  telemetry = {
+                    enable = false, -- Do not send telemetry data
                   },
                 },
               },

@@ -32,6 +32,7 @@ brew install ripgrep gnu-sed
 24.	log-highlight.nvim – Highlight logs in Neovim for better readability.
 25.	nvim-spectre – Search and replace tool with a nice UI.
 26.	smear-cursor.nvim – Animate the cursor with a smear effect for enhanced visual feedback.
+27. friendly-snippets - Community maintained snippets for various programming languages
 
 ## Configuration for my nvim setup
 
