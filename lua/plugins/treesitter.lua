@@ -5,6 +5,14 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("nvim-treesitter.configs").setup({
+        modules = {},
+        -- Install parsers synchronously (only applied to `ensure_installed`)
+        sync_install = false,
+
+        -- Automatically install missing parsers when entering buffer
+        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+        auto_install = true,
+        ignore_install = {},
         ensure_installed = {
           "c", "lua", "javascript", "html",
           "go", "typescript", "python",
