@@ -41,6 +41,7 @@ brew install ripgrep gnu-sed
 33. nvim-treesitter-context - Shows the context of the currently visible buffer contents. 
 34. typescript-tools.nvim - The TypeScript Integration NeoVim Deserves 
 35. copilot.vim - Github Copilot integration for auto completion using AI
+36. fidget - A pretty UI for Neovim LSP progress
 
 ## Configuration for my nvim setup
 
