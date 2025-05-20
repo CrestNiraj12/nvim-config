@@ -17,7 +17,7 @@ function M.picker()
       value = device.id,
       display = string.format("%s (%s)[%s]",
         device.name,
-        device.emulator and device.id or "",
+        device.id,
         device.targetPlatform
       ),
       ordinal = device.name,
