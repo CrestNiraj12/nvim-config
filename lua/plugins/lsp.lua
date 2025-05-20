@@ -2,10 +2,6 @@ local isInitialized = false
 
 return {
   {
-    'jose-elias-alvarez/nvim-lsp-ts-utils',
-    requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
-  },
-  {
     'williamboman/mason.nvim',
     lazy = false,
     config = true,
@@ -131,6 +127,7 @@ return {
           "taplo",
           "marksman",
           "sourcery",
+          "ts_ls",
         },
         handlers = {
           default_setup,
@@ -175,47 +172,6 @@ return {
               },
             })
           end,
-          -- tsserver = function()
-          --   require('lspconfig').tsserver.setup({
-          --     on_attach = function(client, bufnr)
-          --       local ts_utils = require('nvim-lsp-ts-utils')
-          --       ts_utils.setup({
-          --         -- specify preferences for import sorting and other options
-          --         import_all_timeout = 5000, -- milliseconds
-          --         import_all_priorities = {
-          --           buffers = 4,             -- loaded buffer names
-          --           buffer_content = 3,      -- loaded buffer content
-          --           local_files = 2,         -- git files or files with relative path markers
-          --           same_file = 1,           -- add to existing import statement
-          --         },
-          --         import_all_scan_buffers = 100,
-          --         import_all_select_source = false,
-          --         always_organize_imports = true,
-          --         eslint_enable_diagnostics = true,
-          --         complete_parens = true,
-          --         eslint_enable_code_actions = true,
-          --         enable_formatting = true,
-          --         formatter = 'prettier',
-          --         eslint_bin = 'eslint_d',
-          --       })
-          --       ts_utils.setup_client(client)
-          --
-          --       local opts = { silent = true }
-          --       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', ':TSLspOrganize<CR>', opts)
-          --       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', ':TSLspRenameFile<CR>', opts)
-          --       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'go', ':TSLspImportAll<CR>', opts)
-          --
-          --       -- Auto format on save
-          --       vim.api.nvim_create_autocmd("BufWritePre", {
-          --         buffer = bufnr,
-          --         callback = function()
-          --           vim.lsp.buf.format({ bufnr = bufnr })
-          --           ts_utils.organize_imports_sync()
-          --         end,
-          --       })
-          --     end,
-          --   })
-          -- end
         },
         automatic_installation = true,
         automatic_enable = false,
