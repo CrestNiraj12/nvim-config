@@ -19,6 +19,7 @@ return {
           'branch',
           'g:flutter_tools_decorations.app_version',
           'g:flutter_tools_decorations.device',
+          'g:flutter_tools_decorations.project_config',
         },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },

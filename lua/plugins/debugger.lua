@@ -5,14 +5,6 @@ return {
       "rcarriga/nvim-dap-ui",
       dependencies = {
         "nvim-neotest/nvim-nio",
-        {
-          "folke/neodev.nvim",
-          config = function()
-            require("neodev").setup({
-              library = { plugins = { "nvim-dap-ui" }, types = true },
-            })
-          end
-        }
       },
       keys = {
         { "<leader>du", function() require("dapui").toggle({}) end, desc = "Toggle DAP UI" },
@@ -28,18 +20,14 @@ return {
     },
     {
       "theHamsta/nvim-dap-virtual-text",
-      config = function()
-        require("nvim-dap-virtual-text").setup({
-          -- Customize virtual text appearance here
-        })
-      end
     },
     {
       "jay-babu/mason-nvim-dap.nvim",
-      dependencies = "williamboman/mason.nvim",
+      dependencies = "mason-org/mason.nvim",
       config = function()
         require("mason-nvim-dap").setup({
           automatic_setup = true,
+          automatic_installation = true,
           ensure_installed = { "python", "dart" }, -- Add or remove debug adapters as needed
         })
       end

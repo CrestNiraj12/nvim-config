@@ -1,10 +1,22 @@
 local isInitialized = false
+local devicesFetched = false
 
 return {
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     lazy = false,
     config = true,
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
   },
   {
     'neovim/nvim-lspconfig',
@@ -12,19 +24,92 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'saghen/blink.cmp' },
-      { 'williamboman/mason-lspconfig.nvim' },
+      {
+        "mason-org/mason-lspconfig.nvim",
+        dependencies = {
+          { "mason-org/mason.nvim" },
+        },
+      },
     },
     config = function()
+      local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
+
+      local default_setup = function(server)
+        require('lspconfig')[server].setup({
+          capabilities = lsp_capabilities,
+        })
+      end
+
+      require('mason-lspconfig').setup({
+        ensure_installed = {
+          "gopls",
+          "jdtls",
+          "lua_ls",
+          "html",
+          "pyright",
+          "jsonls",
+          "rust_analyzer",
+          "taplo",
+          "sourcery",
+          "ts_ls",
+        },
+        handlers = {
+          default_setup,
+          sourcery = function()
+            require('lspconfig').sourcery.setup({
+              init_options = {
+                --- The Sourcery token for authenticating the user.
+                --- This is retrieved from the Sourcery website and must be
+                --- provided by each user. The extension must provide a
+                --- configuration option for the user to provide this value.
+                token = os.getenv('SOURCERY_TOKEN'),
+
+                --- The extension's name and version as defined by the extension.
+                extension_version = 'vim.lsp',
+
+                --- The editor's name and version as defined by the editor.
+                editor_version = 'vim',
+              }
+            })
+          end,
+        },
+        automatic_installation = true,
+        automatic_enable = false,
+      })
+
+      require('lspconfig').lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = {
+                vim.env.VIMRUNTIME,
+              },
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false, -- Do not send telemetry data
+            },
+          },
+        },
+      })
+
       local devices = require('user.flutter.devices')
       if (not isInitialized) then
-        vim.api.nvim_create_autocmd("BufReadPost", {
+        vim.api.nvim_create_autocmd("LspAttach", {
           pattern = "*.dart",
           callback = function(event)
             local buf = event.buf;
 
-            devices.fetch(function()
-              vim.notify("Devices fetched!")
-            end)
+            if not devicesFetched then
+              devices.fetch(function()
+                devicesFetched = true
+                vim.notify("Devices fetched!")
+              end)
+            end
+
 
             vim.api.nvim_create_user_command('FlutterDevices', function()
               if vim.tbl_isempty(devices.get_devices()) then
@@ -101,80 +186,6 @@ return {
           -- Bind the organize and format function to <C-s> keymap
           vim.keymap.set('n', '<C-s>', organize_and_format, { desc = 'Format and Organize Imports' })
         end
-      })
-
-
-      -- hover borders
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
-      local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
-
-      local default_setup = function(server)
-        require('lspconfig')[server].setup({
-          capabilities = lsp_capabilities,
-        })
-      end
-
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          "gopls",
-          "jdtls",
-          "lua_ls",
-          "html",
-          "pyright",
-          "jsonls",
-          "rust_analyzer",
-          "taplo",
-          "marksman",
-          "sourcery",
-          "ts_ls",
-        },
-        handlers = {
-          default_setup,
-          sourcery = function()
-            require('lspconfig').sourcery.setup({
-              init_options = {
-                --- The Sourcery token for authenticating the user.
-                --- This is retrieved from the Sourcery website and must be
-                --- provided by each user. The extension must provide a
-                --- configuration option for the user to provide this value.
-                token = os.getenv('SOURCERY_TOKEN'),
-
-                --- The extension's name and version as defined by the extension.
-                extension_version = 'vim.lsp',
-
-                --- The editor's name and version as defined by the editor.
-                editor_version = 'vim',
-              }
-            })
-          end,
-          lua_ls = function()
-            require('lspconfig').lua_ls.setup({
-              settings = {
-                Lua = {
-                  runtime = {
-                    version = 'LuaJIT', -- Neovim uses LuaJIT
-                  },
-                  diagnostics = {
-                    globals = { "vim" },
-                  },
-                  workspace = {
-                    library = {
-                      [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                      [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                    },
-                    checkThirdParty = false,
-                  },
-                  telemetry = {
-                    enable = false, -- Do not send telemetry data
-                  },
-                },
-              },
-            })
-          end,
-        },
-        automatic_installation = true,
-        automatic_enable = false,
       })
     end
   }

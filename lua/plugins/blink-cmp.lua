@@ -11,7 +11,7 @@ return {
       ["<CR>"] = { 'accept', 'fallback' },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
         snippets = {
           opts = {
@@ -20,6 +20,12 @@ return {
               vim.fn.stdpath("data") .. "/lazy/friendly-snippets",
             },
           },
+        },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
         },
       },
     },

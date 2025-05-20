@@ -15,10 +15,10 @@ function M.picker()
   for _, device in ipairs(c_devices) do
     table.insert(entries, {
       value = device.id,
-      display = string.format("%s (%s)%s",
+      display = string.format("%s (%s)[%s]",
         device.name,
-        device.targetPlatform,
-        device.emulator and " [emulator]" or ""
+        device.emulator and device.id or "",
+        device.targetPlatform
       ),
       ordinal = device.name,
       device = device
@@ -36,7 +36,7 @@ function M.picker()
 
     map('n', '<C-r>', function()
       devices.fetch(function()
-        require('telescope.actions')._close(prompt_bufnr, true)
+        require('telescope.actions').close(prompt_bufnr)
         vim.schedule(M.picker)
       end)
     end)
@@ -45,7 +45,7 @@ function M.picker()
   end
 
 
-  require('telescope.pickers').new({
+  require('telescope.pickers').new({}, {
     prompt_title = 'Flutter Devices',
     finder = require('telescope.finders').new_table({
       results = entries,

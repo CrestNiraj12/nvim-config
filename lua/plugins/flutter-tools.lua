@@ -1,7 +1,6 @@
 return {
   {
     'akinsho/flutter-tools.nvim',
-    lazy = false,
     event = { "BufReadPre", "BufNewFile" },
     ft = { "dart" },
     dependencies = {
@@ -17,6 +16,7 @@ return {
           statusline = {
             app_version = true,
             device = true,
+            project_config = true,
           }
         },
         fvm = true,
@@ -71,15 +71,6 @@ return {
                 cwd = "${workspaceFolder}",
                 toolArgs = { '--flavor', 'dev' },
               },
-              {
-                type = 'flutter',
-                request = 'launch',
-                name = 'Flutter Profile Prod',
-                flutterMode = 'profile',
-                program = "${workspaceFolder}/lib/main.dart",
-                cwd = "${workspaceFolder}",
-                toolArgs = { '--flavor', 'prod' },
-              }
 
             }
             require("dap.ext.vscode").load_launchjs()
@@ -116,11 +107,12 @@ return {
             completeFunctionCalls = true,
             enableSnippets = true,
             analysisExcludedFolders = {
-              "build",
-              "android",
-              "ios",
-              "~/.pub-cache",
-              ".dart_tool"
+              vim.fn.expand("$HOME/.pub-cache"),
+              vim.fn.expand("$HOME/fvm"),
+              vim.fn.getcwd() .. "/build",
+              vim.fn.getcwd() .. "/.dart_tool",
+              vim.fn.getcwd() .. "/ios",
+              vim.fn.getcwd() .. "/android",
             }
           },
         },
