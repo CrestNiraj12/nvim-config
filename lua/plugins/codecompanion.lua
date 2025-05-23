@@ -1,5 +1,9 @@
 return {
   'olimorris/codecompanion.nvim',
+  init = function()
+    local codecompanion = require("user.fidget.codecompanion")
+    codecompanion:init()
+  end,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
