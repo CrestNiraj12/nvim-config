@@ -11,7 +11,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
 -- Buffer Close All
-set('n', '<leader>ba', ':bufdo bd<CR>', { noremap = true, silent = true, desc = 'Buffer Close All' })
+set('n', '<leader>ba', ':%bd | e# | bd#<CR>', { noremap = true, silent = true, desc = 'Buffer Close All' })
 -- Save file
 set('n', '<leader>s', ':w<CR>', { noremap = true, silent = true, desc = 'Save file' })
 -- Close file

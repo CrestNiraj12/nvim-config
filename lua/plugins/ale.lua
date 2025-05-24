@@ -11,10 +11,7 @@ return {
     -- Set up any ALE linters, fixers, or other options as needed
     -- Example: Enable specific linters
     vim.g.ale_linters = {
-      python = { 'flake8', 'mypy' },
-      dart = { 'dartanalyzer' },
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
+      python = { 'flake8' },
       json = { 'jsonls' },
       yaml = { 'yamlls' },
       xml = { 'lemminx' }
@@ -23,12 +20,8 @@ return {
 
     -- Example: Enable ALE fixers
     vim.g.ale_fixers = {
-      -- python = { 'black', 'ruff_format', 'isort' },
-      dart = { 'dartfmt' },
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
+      python = { 'black', 'ruff_format', 'isort' },
       -- Add other languages and fixers as needed
     }
-    vim.g.ale_fix_on_save = 1 -- Automatically fix errors on save
   end,
 }

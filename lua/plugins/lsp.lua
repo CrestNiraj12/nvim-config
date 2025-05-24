@@ -1,6 +1,11 @@
 local isInitialized = false
 local devicesFetched = false
 
+local force_format_clients = {
+  dartls = true,
+  lua_ls = true,
+}
+
 return {
   {
     'mason-org/mason.nvim',
@@ -35,10 +40,11 @@ return {
       local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
       local default_setup = function(server)
-        require('lspconfig')[server].setup({
+        vim.lsp.config(server, {
           capabilities = lsp_capabilities,
         })
       end
+
 
       require('mason-lspconfig').setup({
         ensure_installed = {
@@ -55,8 +61,26 @@ return {
         },
         handlers = {
           default_setup,
+          vim.lsp.config("lua_ls", {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { 'vim' },
+                },
+                workspace = {
+                  library = {
+                    vim.env.VIMRUNTIME,
+                  },
+                  checkThirdParty = false,
+                },
+                telemetry = {
+                  enable = false, -- Do not send telemetry data
+                },
+              },
+            },
+          }),
           sourcery = function()
-            require('lspconfig').sourcery.setup({
+            vim.lsp.config("sourcery", {
               init_options = {
                 --- The Sourcery token for authenticating the user.
                 --- This is retrieved from the Sourcery website and must be
@@ -77,24 +101,6 @@ return {
         automatic_enable = false,
       })
 
-      require('lspconfig').lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            workspace = {
-              library = {
-                vim.env.VIMRUNTIME,
-              },
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false, -- Do not send telemetry data
-            },
-          },
-        },
-      })
 
       local devices = require('user.flutter.devices')
       if (not isInitialized) then
@@ -164,12 +170,31 @@ return {
           vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
+          local function has_formatting(client)
+            vim.notify(client.name .. tostring(force_format_clients[client.name]))
+            return
+                client.server_capabilities
+                and client.server_capabilities.documentFormattingProvider
+                or force_format_clients[client.name] == true
+          end
+
           -- Define a function to organize imports and formatlsp.
           local function organize_and_format()
-            -- Format the buffer
-            local _, _ = pcall(function()
+            local bufnr = vim.api.nvim_get_current_buf()
+
+            -- Check if any attached client supports formatting
+            local has_lsp_formatter = false
+            for _, client in pairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+              has_lsp_formatter = has_formatting(client)
+            end
+
+
+            -- Run appropriate formatter
+            if has_lsp_formatter then
               vim.lsp.buf.format({ async = true })
-            end)
+            else
+              vim.cmd("ALEFix")
+            end
 
             -- Request code action to organize imports
             if vim.bo.filetype == 'dart' then
