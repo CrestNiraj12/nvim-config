@@ -43,6 +43,7 @@ brew install ripgrep gnu-sed
 35. fidget - A pretty UI for Neovim LSP progress
 36. codecompanion – Provides AI-assisted code completion and suggestions.
 37. tailwind-tools.nvim - A Neovim plugin providing utilities for Tailwind CSS development.
+38. nvim-ts-autotag - Automatically closes and renames surrounding tags in JSX/TSX.
 
 ## Configuration for my nvim setup
 
