@@ -12,6 +12,7 @@ return {
     -- Example: Enable specific linters
     vim.g.ale_linters = {
       python = { 'flake8' },
+      dart = {},
       json = { 'jsonls' },
       yaml = { 'yamlls' },
       xml = { 'lemminx' }
@@ -20,6 +21,7 @@ return {
 
     -- Example: Enable ALE fixers
     vim.g.ale_fixers = {
+      dart = {},
       python = { 'black', 'ruff_format', 'isort' },
       -- Add other languages and fixers as needed
     }
