@@ -42,6 +42,7 @@ brew install ripgrep gnu-sed
 34. typescript-tools.nvim - The TypeScript Integration NeoVim Deserves 
 35. fidget - A pretty UI for Neovim LSP progress
 36. codecompanion – Provides AI-assisted code completion and suggestions.
+37. tailwind-tools.nvim - A Neovim plugin providing utilities for Tailwind CSS development.
 
 ## Configuration for my nvim setup
 

@@ -58,6 +58,7 @@ return {
           "taplo",
           "sourcery",
           "ts_ls",
+          "tailwindcss",
         },
         handlers = {
           default_setup,
