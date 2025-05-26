@@ -171,7 +171,6 @@ return {
           vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
           local function has_formatting(client)
-            vim.notify(client.name .. tostring(force_format_clients[client.name]))
             return
                 client.server_capabilities
                 and client.server_capabilities.documentFormattingProvider
