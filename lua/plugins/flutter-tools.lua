@@ -96,7 +96,7 @@ return {
         },
         lsp = {
           color = {
-            enabled = true,
+            enabled = false,
             background = true,
             virtual_text = false,
           },
