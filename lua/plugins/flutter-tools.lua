@@ -49,9 +49,9 @@ return {
                 request = 'launch',
                 name = 'Flutter DEV Release',
                 flutterMode = 'release',
-                program = "${workspaceFolder}/lib/main.dart",
+                program = "${workspaceFolder}/lib/app/main_development.dart",
                 cwd = "${workspaceFolder}",
-                toolArgs = { '--flavor', 'dev', '--release' },
+                toolArgs = { '--flavor', 'development', '--release', '--dart-define', 'ENV=DEV' },
               },
               {
                 type = 'flutter',

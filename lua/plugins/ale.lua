@@ -23,6 +23,7 @@ return {
     vim.g.ale_fixers = {
       dart = {},
       python = { 'black', 'ruff_format', 'isort' },
+      css = { 'prettier' }
       -- Add other languages and fixers as needed
     }
   end,
