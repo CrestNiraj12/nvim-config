@@ -1,11 +1,12 @@
 return {
   {
     "gelguy/wilder.nvim",
-    event = "CmdlineEnter",     -- Lazy-load on entering the command line
+    event = "VeryLazy", -- Load after startup, not on first use
+    dependencies = { "romgrk/fzy-lua-native" }, -- Declare as a dependency
     config = function()
       local wilder = require('wilder')
       wilder.setup({
-        modes = { ':', '/', '?' },       -- Enable wilder for command mode and search modes
+        modes = { ':', '/', '?' }, -- Enable wilder for command mode and search modes
       })
 
       -- Merge the configurations for renderer
@@ -28,11 +29,7 @@ return {
       ))
       -- Ensure the dependencies for the highlighters are met:
       -- 1. `luarocks install pcre2` for lua_pcre2_highlighter
-      -- 2. Install `romgrk/fzy-lua-native` plugin for lua_fzy_highlighter
+      -- 2. `fzy-lua-native` is now a dependency
     end
-  },
-  {
-    "romgrk/fzy-lua-native",
-    after = "wilder.nvim",     -- Load after wilder.nvim
   },
 }

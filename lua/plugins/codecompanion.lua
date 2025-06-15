@@ -1,9 +1,5 @@
 return {
   'olimorris/codecompanion.nvim',
-  init = function()
-    local codecompanion = require("user.fidget.codecompanion")
-    codecompanion:init()
-  end,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
@@ -13,12 +9,14 @@ return {
     },
   },
   config = function()
+    require("user.fidget.codecompanion-fidget"):init()
+
     local gemini_api_key = os.getenv("GEMINI_API_KEY")
 
     if gemini_api_key == nil then
       vim.notify("Gemini API key not found!", vim.log.levels.ERROR)
     else
-      print("Gemini API key loaded successfully")
+      vim.notify("Gemini API key loaded successfully", vim.log.levels.INFO)
     end
 
     require('codecompanion').setup {
@@ -38,7 +36,7 @@ return {
             },
             schema = {
               model = {
-                default = "gemini-2.0-flash",
+                default = "gemini-2.5-pro-preview-06-05",
               },
             },
           })
