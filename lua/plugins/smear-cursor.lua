@@ -3,6 +3,9 @@ return {
 
   opts = {
     cursor_color = "#ADD8E6",
+    smear_diagonally = false,
+    max_length = 50,
+    trailing_stiffness = 0.2,
 
     -- Smear cursor when switching buffers or windows.
     smear_between_buffers = true,
