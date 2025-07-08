@@ -36,7 +36,7 @@ return {
             },
             schema = {
               model = {
-                default = "gemini-2.5-pro-preview-06-05",
+                default = "gemini-2.5-pro",
               },
             },
           })
