@@ -44,6 +44,7 @@ brew install ripgrep gnu-sed
 36. codecompanion – Provides AI-assisted code completion and suggestions.
 37. tailwind-tools.nvim - A Neovim plugin providing utilities for Tailwind CSS development.
 38. nvim-ts-autotag - Automatically closes and renames surrounding tags in JSX/TSX.
+39. copilot - AI-assisted code completion
 
 ## Configuration for my nvim setup
 

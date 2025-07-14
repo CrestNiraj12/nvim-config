@@ -4,7 +4,6 @@ require("keymaps")
 vim.loader.enable()
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('pyright')
-vim.lsp.set_log_level("debug")
 
 -- lazy plugin manager setup --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
