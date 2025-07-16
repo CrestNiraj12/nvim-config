@@ -40,7 +40,6 @@ return {
         })
       end
 
-
       require('mason-lspconfig').setup({
         ensure_installed = {
           "gopls",
@@ -51,7 +50,6 @@ return {
           "jsonls",
           "rust_analyzer",
           "taplo",
-          "sourcery",
           "ts_ls",
           "tailwindcss",
         },
@@ -75,23 +73,6 @@ return {
               },
             },
           }),
-          sourcery = function()
-            vim.lsp.config("sourcery", {
-              init_options = {
-                --- The Sourcery token for authenticating the user.
-                --- This is retrieved from the Sourcery website and must be
-                --- provided by each user. The extension must provide a
-                --- configuration option for the user to provide this value.
-                token = os.getenv('SOURCERY_TOKEN'),
-
-                --- The extension's name and version as defined by the extension.
-                extension_version = 'vim.lsp',
-
-                --- The editor's name and version as defined by the editor.
-                editor_version = 'vim',
-              }
-            })
-          end,
         },
         automatic_installation = true,
         automatic_enable = false,
