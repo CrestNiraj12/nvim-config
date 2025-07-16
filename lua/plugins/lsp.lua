@@ -1,11 +1,6 @@
 local isInitialized = false
 local devicesFetched = false
 
-local force_format_clients = {
-  dartls = true,
-  lua_ls = true,
-}
-
 return {
   {
     'mason-org/mason.nvim',
@@ -171,29 +166,25 @@ return {
           vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set({ 'n', 'x' }, "<leader>.", '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
-          local function has_formatting(client)
-            return
-                client.server_capabilities
-                and client.server_capabilities.documentFormattingProvider
-                or force_format_clients[client.name] == true
-          end
-
           -- Define a function to organize imports and formatlsp.
           local function organize_and_format()
-            local bufnr = vim.api.nvim_get_current_buf()
+            local ale_ft = {
+              python = true,
+              css = true,
+            }
 
-            -- Check if any attached client supports formatting
-            local has_lsp_formatter = false
-            for _, client in pairs(vim.lsp.get_clients({ bufnr = bufnr })) do
-              has_lsp_formatter = has_formatting(client)
-            end
-
+            local ts_js_ft = {
+              typescript = true,
+              typescriptreact = true,
+              javascript = true,
+              javascriptreact = true,
+            }
 
             -- Run appropriate formatter
-            if has_lsp_formatter then
-              vim.lsp.buf.format({ async = true })
-            else
+            if ale_ft[vim.bo.filetype] then
               vim.cmd("ALEFix")
+            else
+              vim.lsp.buf.format({ async = false })
             end
 
             -- Request code action to organize imports
@@ -201,15 +192,22 @@ return {
               vim.lsp.buf.code_action({
                 context = {
                   diagnostics = {},
-                  only = { "source.organizeImports", },
+                  only = { "source.organizeImports" },
                 },
-                apply = true
+                apply = true,
               })
+            elseif ts_js_ft[vim.bo.filetype] then
+              vim.cmd("TSToolsOrganizeImports")
             end
           end
 
           -- Bind the organize and format function to <C-s> keymap
           vim.keymap.set('n', '<C-s>', organize_and_format, { desc = 'Format and Organize Imports' })
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            buffer = event.buf,
+            callback = organize_and_format,
+            desc = 'Format and Organize Imports on Save',
+          })
         end
       })
     end
