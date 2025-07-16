@@ -8,9 +8,9 @@ return {
       transparent_background = false,
       color_overrides = {
         mocha = {
-          base = "#12121b",   -- default is #1e1e2e → this is darker but not black
-          mantle = "#1a1a23", -- slightly lighter than base
-          crust = "#101017",  -- darker edge
+          base = "#12121b",
+          mantle = "#1a1a23",
+          crust = "#101017",
         },
       },
       integrations = {
