@@ -184,11 +184,6 @@ return {
 
           -- Bind the organize and format function to <C-s> keymap
           vim.keymap.set('n', '<C-s>', organize_and_format, { desc = 'Format and Organize Imports' })
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            buffer = event.buf,
-            callback = organize_and_format,
-            desc = 'Format and Organize Imports on Save',
-          })
         end
       })
     end
