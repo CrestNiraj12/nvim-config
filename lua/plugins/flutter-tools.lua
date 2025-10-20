@@ -78,10 +78,10 @@ return {
         },
         dev_tools = {
           autostart = false,
-          auto_open_browser = true,
+          auto_open_browser = false,
         },
         outline = { auto_open = false },
-        widget_guides = { enabled = false, debug = false, },
+        widget_guides = { enabled = true, debug = false, },
         root_patterns = { ".git", "pubspec.yaml" },
         dev_log = {
           enabled = true,
@@ -96,9 +96,9 @@ return {
         },
         lsp = {
           color = {
-            enabled = false,
+            enabled = true,
             background = true,
-            virtual_text = false,
+            virtual_text = true,
           },
           settings = {
             showTodos = true,

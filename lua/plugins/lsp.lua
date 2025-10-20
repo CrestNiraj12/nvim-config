@@ -30,6 +30,7 @@ return {
           { "mason-org/mason.nvim" },
         },
       },
+      { 'Hoffs/omnisharp-extended-lsp.nvim' }
     },
     config = function()
       local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -52,6 +53,7 @@ return {
           "taplo",
           "ts_ls",
           "tailwindcss",
+          "omnisharp",
         },
         handlers = {
           default_setup,
@@ -73,11 +75,20 @@ return {
               },
             },
           }),
+          vim.lsp.config("omnisharp", {
+            handlers = {
+              ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+              ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+              ["textDocument/references"] = require('omnisharp_extended').references_handler,
+              ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+            },
+          })
         },
         automatic_installation = true,
         automatic_enable = false,
       })
 
+      vim.lsp.enable({ 'lua_ls', 'pyright', 'omnisharp' })
 
       local devices = require('user.flutter.devices')
       if (not isInitialized) then
@@ -150,8 +161,7 @@ return {
           -- Define a function to organize imports and formatlsp.
           local function organize_and_format()
             local ale_ft = {
-              python = true,
-              css = true,
+              dart = true,
             }
 
             local ts_js_ft = {
@@ -163,13 +173,11 @@ return {
 
             -- Run appropriate formatter
             if ale_ft[vim.bo.filetype] then
-              vim.cmd("ALEFix")
-            else
               vim.lsp.buf.format({ async = false })
             end
 
             -- Request code action to organize imports
-            if vim.bo.filetype == 'dart' then
+            if ale_ft[vim.bo.filetype] then
               vim.lsp.buf.code_action({
                 context = {
                   diagnostics = {},
