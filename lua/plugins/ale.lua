@@ -28,7 +28,7 @@ return {
       css = { 'prettier' },
       cs = { 'clang-format', 'remove_trailing_lines', 'trim_whitespace' },
       javascript = { "eslint", "prettier" },
-      ypescript = { "eslint", "prettier" },
+      typescript = { "eslint", "prettier" },
       typescriptreact = { "eslint", "prettier" },
       json = { 'prettier' },
       html = { 'prettier' },
