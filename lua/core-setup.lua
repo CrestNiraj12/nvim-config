@@ -56,4 +56,4 @@ local function set_indent_width(filetypes, width)
 end
 
 -- Set indent width to 4 for JSON, YAML, and XML files
-set_indent_width({ "json", "yaml", "xml" }, 4)
+set_indent_width({ "json", "yaml", "xml" }, 2)

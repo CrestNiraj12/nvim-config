@@ -16,7 +16,7 @@ return {
     -- You can add more mappings as needed
   },
   window = {
-    winhighlight = "Normal:NeoTreeNormal,NormalNC:NeoTreeNormal",
+    winhighlight = "Normal:NeoTreeNormal,NormalNC:NeoTreeNormalNC",
     mappings = {
       ["P"] = {
         "toggle_preview",
