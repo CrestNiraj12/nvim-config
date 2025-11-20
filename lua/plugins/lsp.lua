@@ -83,7 +83,7 @@ return {
               ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
             },
           })
-        },
+       },
         automatic_installation = true,
         automatic_enable = false,
       })
@@ -160,8 +160,9 @@ return {
 
           -- Define a function to organize imports and formatlsp.
           local function organize_and_format()
-            local ale_ft = {
+            local lsp_ft = {
               dart = true,
+              lua = true,
             }
 
             local ts_js_ft = {
@@ -172,12 +173,12 @@ return {
             }
 
             -- Run appropriate formatter
-            if ale_ft[vim.bo.filetype] then
+            if lsp_ft[vim.bo.filetype] then
               vim.lsp.buf.format({ async = false })
             end
 
             -- Request code action to organize imports
-            if ale_ft[vim.bo.filetype] then
+            if vim.bo.filetype == "dart" then
               vim.lsp.buf.code_action({
                 context = {
                   diagnostics = {},
