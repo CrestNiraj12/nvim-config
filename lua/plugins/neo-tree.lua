@@ -11,6 +11,7 @@ return {
 		-- Focus --
 		{ '<leader>nf', "<cmd>Neotree focus position=right<CR>",                                      desc = "Focus Neo-tree" },
 		{ '<leader>nd', "<cmd>Neotree toggle position=right reveal_force_cwd=true <CR>", desc = "Toggle Neo-tree and reveal current file" },
+		{ '<leader>ne', "<cmd>Neotree toggle position=left reveal_force_cwd=true <CR>", desc = "Toggle Neo-tree and reveal current file" },
 		{ '<leader>nb', "<cmd>Neotree toggle position=right source=buffers <CR>",        desc = "Toggle Neo-tree with buffer list" },
 		-- You can add more mappings as needed
 	},

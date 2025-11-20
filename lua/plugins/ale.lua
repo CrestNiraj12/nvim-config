@@ -6,7 +6,9 @@ return {
     vim.g.ale_lint_on_enter = 1               -- Lint files when they are opened
     vim.g.ale_lint_on_save = 1                -- Lint files when they are saved
     vim.g.ale_fix_on_save = 1                 -- Automatically fix issues on save
-    vim.g.ale_lint_on_text_changed = 'always' -- Lint files as you type
+    vim.g.ale_lint_on_text_changed = 'never' -- Lint files as you type
+    vim.g.ale_maximum_processes = 4
+    vim.g.ale_linters_explicit = 1
     vim.g.ale_javascript_prettier_use_local_config = 1
 
     -- Additional ALE settings...
@@ -18,6 +20,9 @@ return {
       json = { 'jsonls' },
       yaml = { 'yamlls' },
       xml = { 'lemminx' },
+      javascript = { 'eslint' },
+      typescript = { 'eslint' },
+      typescriptreact = { "eslint" },
       -- Add other languages and linters as needed
     }
 
@@ -27,9 +32,9 @@ return {
       python = { 'black', 'ruff_format', 'isort' },
       css = { 'prettier' },
       cs = { 'clang-format', 'remove_trailing_lines', 'trim_whitespace' },
-      javascript = { "eslint", "prettier" },
-      typescript = { "eslint", "prettier" },
-      typescriptreact = { "eslint", "prettier" },
+      javascript = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
       json = { 'prettier' },
       html = { 'prettier' },
     }
