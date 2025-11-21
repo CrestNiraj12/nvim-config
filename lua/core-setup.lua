@@ -43,6 +43,7 @@ opt.splitbelow = true -- Horizontal splits will open below
 -- :set wrap!
 opt.wrap = false
 
+opt.laststatus = 3
 
 -- Function to set indent width for specific file types
 local function set_indent_width(filetypes, width)

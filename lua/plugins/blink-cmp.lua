@@ -1,6 +1,9 @@
 return {
   'saghen/blink.cmp',
   version = '*',
+  dependencies = {
+    'roobert/tailwindcss-colorizer-cmp.nvim',
+  },
   opts = {
     keymap = {
       preset = 'default',
@@ -10,7 +13,7 @@ return {
       ["<CR>"] = { 'accept', 'fallback' },
     },
     sources = {
-      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
         snippets = {
           opts = {
@@ -25,11 +28,6 @@ return {
           module = "lazydev.integrations.blink",
           -- make lazydev completions top priority (see `:h blink.cmp`)
           score_offset = 100,
-        },
-        codecompanion = {
-          name = "CodeCompanion",
-          module = "codecompanion.providers.completion.blink",
-          enabled = true,
         },
       },
     },

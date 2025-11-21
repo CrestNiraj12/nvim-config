@@ -41,10 +41,9 @@ brew install ripgrep gnu-sed
 33. nvim-treesitter-context - Shows the context of the currently visible buffer contents. 
 34. typescript-tools.nvim - The TypeScript Integration NeoVim Deserves 
 35. fidget - A pretty UI for Neovim LSP progress
-36. codecompanion – Provides AI-assisted code completion and suggestions.
-37. tailwind-tools.nvim - A Neovim plugin providing utilities for Tailwind CSS development.
-38. nvim-ts-autotag - Automatically closes and renames surrounding tags in JSX/TSX.
-39. copilot - AI-assisted code completion
+36. nvim-ts-autotag - Automatically closes and renames surrounding tags in JSX/TSX.
+37. copilot - AI-assisted code completion
+38. avante.nvim - AI-powered coding assistant with advanced context understanding and code generation capabilities
 
 ## Configuration for my nvim setup
 

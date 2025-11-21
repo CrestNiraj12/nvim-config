@@ -33,14 +33,6 @@ return {
       { 'Hoffs/omnisharp-extended-lsp.nvim' }
     },
     config = function()
-      local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
-
-      local default_setup = function(server)
-        vim.lsp.config(server, {
-          capabilities = lsp_capabilities,
-        })
-      end
-
       require('mason-lspconfig').setup({
         ensure_installed = {
           "gopls",
@@ -50,13 +42,10 @@ return {
           "pyright",
           "jsonls",
           "rust_analyzer",
-          "taplo",
-          "ts_ls",
           "tailwindcss",
           "omnisharp",
         },
         handlers = {
-          default_setup,
           vim.lsp.config("lua_ls", {
             settings = {
               Lua = {
@@ -82,13 +71,15 @@ return {
               ["textDocument/references"] = require('omnisharp_extended').references_handler,
               ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
             },
-          })
-       },
+          }),
+        },
         automatic_installation = true,
-        automatic_enable = false,
       })
 
-      vim.lsp.enable({ 'lua_ls', 'pyright', 'omnisharp' })
+      local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
+      vim.lsp.config.default = {
+        capabilities = lsp_capabilities,
+      }
 
       local devices = require('user.flutter.devices')
       if (not isInitialized) then

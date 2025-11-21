@@ -3,6 +3,9 @@ require("keymaps")
 
 vim.loader.enable()
 
+vim.env.NVIM_LISTEN_ADDRESS = vim.env.NVIM_LISTEN_ADDRESS
+    or ("/tmp/nvim-" .. vim.fn.getpid())
+
 -- lazy plugin manager setup --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
