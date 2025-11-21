@@ -51,7 +51,7 @@ return {
       function()
         -- Generates a conventional + gitmoji commit message for staged changes using instructions_file guidance
         vim.cmd(
-          [[AvanteAsk Generate a single concise gitmoji conventional commit message for the currently staged git diff. Follow the instructions file (commit formatting rules, gitmojis, wrap body at 72 chars). Include <gitmoji> <type>(<scope>): <description>. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. No trailing period in subject. Do it concisely. ]]);
+          [[AvanteAsk Generate a single concise gitmoji conventional commit message for the currently staged git diff. Follow the instructions file (commit formatting rules, gitmojis, wrap body at 72 chars). Include <gitmoji> <type>(<scope>): <description>. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. No trailing period in subject. Do it concisely and commit them. ]]);
       end,
       desc = "Avante: AI Commit Message",
     },
