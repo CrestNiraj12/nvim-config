@@ -13,6 +13,13 @@ return {
     instructions_file = "avante.md",
     provider = "copilot",
     auto_suggestions_provider = "openai",
+    behaviour = {
+      auto_suggestions = false,
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = false,
+    },
     providers = {
       copilot = {
         model = "claude-opus-41",

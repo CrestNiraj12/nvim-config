@@ -27,6 +27,8 @@ vim.o.termguicolors = true
 -- Disable swap --
 vim.opt.swapfile = false
 
+vim.opt.laststatus = 3
+
 local plugins = {
   { import = "plugins" },
 }
