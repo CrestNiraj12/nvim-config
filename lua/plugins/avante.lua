@@ -50,7 +50,8 @@ return {
       "<leader>gC",
       function()
         -- Generates a conventional + gitmoji commit message for staged changes using instructions_file guidance
-        vim.cmd([[AvanteAsk Generate a single concise gitmoji conventional commit message for the currently staged git diff. Follow the instructions file (commit formatting rules, gitmojis, wrap body at 72 chars). Include <gitmoji> <type>(<scope>): <description>. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. No trailing period in subject. Do it concisely. ]]);
+        vim.cmd(
+          [[AvanteAsk Generate a single concise gitmoji conventional commit message for the currently staged git diff. Follow the instructions file (commit formatting rules, gitmojis, wrap body at 72 chars). Include <gitmoji> <type>(<scope>): <description>. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. No trailing period in subject. Do it concisely. ]]);
       end,
       desc = "Avante: AI Commit Message",
     },
@@ -58,10 +59,13 @@ return {
       "<leader>gr",
       function()
         -- Requests a review & refactor suggestions for staged changes
-        vim.cmd([[AvanteAsk Review the staged git diff. Provide: 1) High-level summary 2) Potential problems (bugs, perf, security) 3) Refactor suggestions 4) Improved commit message with gitmoji.]]);
+        vim.cmd(
+          [[AvanteAsk Review the staged git diff. Provide: 1) High-level summary 2) Potential problems (bugs, perf, security) 3) Refactor suggestions 4) Improved commit message with gitmoji.]]);
       end,
       desc = "Avante: Review & Refactor",
     },
+    { "<leader>gs", function() vim.cmd([[AvanteStop]]) end,   desc = "Avante: Stop" },
+    { "<leader>gm", function() vim.cmd([[AvanteModels]]) end, desc = "Avante: Models" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
