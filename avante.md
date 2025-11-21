@@ -2,77 +2,96 @@
 
 ## Commit Message Generation
 
-When generating commit messages, follow these guidelines:
+Follow these rules when generating commit messages.
 
 ### Format
 ```
 <gitmoji> <type>(<scope>): <description>
 
 <body>
-
-<footer>
 ```
+(Only include a body if it adds useful WHAT/WHY context; wrap at 72 chars. Omit scope if unclear. No trailing period in the subject.)
 
 ### Types with Gitmojis
-- **✨ feat**: A new feature
-- **🐛 fix**: A bug fix
-- **📚 docs**: Documentation only changes
-- **💄 style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **♻️ refactor**: A code change that neither fixes a bug nor adds a feature
-- **⚡ perf**: A code change that improves performance
-- **✅ test**: Adding missing tests or correcting existing tests
-- **👷 build**: Changes that affect the build system or external dependencies
-- **💚 ci**: Changes to CI configuration files and scripts
-- **🔧 chore**: Other changes that don't modify src or test files
-- **⏪ revert**: Reverts a previous commit
+- ✨ feat: A new feature
+- 🐛 fix: A bug fix
+- 📚 docs: Documentation only changes
+- 💄 style: Formatting / style-only changes (no logic)
+- ♻️ refactor: Code change that neither fixes a bug nor adds a feature
+- ⚡ perf: Performance improvement
+- ✅ test: Adding or correcting tests
+- 👷 build: Build system / external dependencies
+- 💚 ci: CI configuration / scripts
+- 🔧 chore: Other changes not affecting src or tests
+- ⏪ revert: Revert a previous commit
 
-### Additional Common Gitmojis
-- **🎉 init**: Initial commit
-- **🔥 remove**: Remove code or files
-- **🚑 hotfix**: Critical hotfix
-- **🔒 security**: Fix security issues
-- **🚀 deploy**: Deploying stuff
-- **📱 responsive**: Work on responsive design
-- **🎨 improve**: Improve structure / format of the code
-- **🔖 release**: Release / Version tags
+### Additional Gitmojis (optional)
+- 🎉 init: Initial commit
+- 🔥 remove: Remove code or files
+- 🚑 hotfix: Critical urgent fix
+- 🔒 security: Security fix / improvement
+- 🚀 deploy: Deployment related changes
+- 📱 responsive: Responsive design work
+- 🎨 improve: Structural / formatting improvements
+- 🔖 release: Release / version tagging
 
 ### Guidelines
-1. Use the imperative mood in the subject line (e.g., "Add feature" not "Added feature")
-2. Keep the subject line under 50 characters
-3. Capitalize the subject line
-4. Do not end the subject line with a period
-5. Use the body to explain what and why vs. how
-6. Wrap the body at 72 characters
+1. Imperative mood: "Add", "Refactor", "Fix" (not past tense).
+2. Subject <= 50 chars; concise and meaningful.
+3. Capitalize subject; no trailing period.
+4. Body (if present) explains WHAT and WHY, not HOW.
+5. Wrap body at 72 chars.
+6. Reference issues if relevant (e.g. "Closes #123").
 
 ### Examples
 ```
-feat(auth): add JWT token validation
+✨ feat(auth): add JWT token validation
 
-Implement JWT token validation middleware to secure API endpoints.
-This adds authentication to all protected routes and validates tokens
-against the configured secret key.
-
+Implement middleware validating JWTs on protected routes.
 Closes #123
 ```
-
 ```
-fix(api): resolve null pointer exception in user service
+🐛 fix(api): handle nil user in profile fetch
 
-Handle case where user object is null before accessing properties.
-This prevents crashes when processing invalid user requests.
+Guard against nil user object to prevent runtime error.
 ```
-
 ```
-docs(readme): update installation instructions
+📚 docs(readme): clarify local setup steps
 
-Add missing dependencies and clarify setup steps for new contributors.
+Add missing dependency list and quick start instructions.
 ```
 
 ## Git Workflow Integration
+1. Stage only logically related changes (`git add -p` if needed).
+2. Use AI to draft commit (<leader>gc) from staged diff.
+3. Review / edit for accuracy and scope.
+4. Commit: `git commit -m "<subject>" -m "<body>"` (body optional).
+5. Push or stack as needed.
 
-When working with git changes:
-1. Analyze the diff to understand what changed
-2. Identify the primary purpose of the changes
-3. Choose the appropriate commit type
-4. Write a clear, concise description
-5. Add context in the body if needed
+## Code Review Focus
+1. Maintainability / readability
+2. Performance implications
+3. Security considerations
+4. Test coverage adequacy
+5. Documentation completeness
+6. Consistency with project standards
+
+## Refactoring Suggestions
+1. Clarify intent and improve naming
+2. Reduce duplication / increase cohesion
+3. Prefer incremental improvements
+4. Preserve backward compatibility when possible
+5. Avoid premature optimization
+
+## Usage With Avante
+- Avante loads this file via `instructions_file = "avante.md"` and injects it as system guidance for prompts.
+- Press `<leader>gc` (mapping) to generate a gitmoji conventional commit for staged changes.
+- Ensure changes are staged (`git add ...`) first.
+- Ask follow-ups (e.g. "Shorten subject", "Remove body", "Add scope (api)").
+
+## Quick Prompt Variants
+- "Generate a gitmoji conventional commit for staged diff."
+- "Provide only header line, no body."
+- "Suggest better scope for this diff."
+
+End of instructions.

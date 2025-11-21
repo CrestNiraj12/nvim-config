@@ -10,7 +10,7 @@ return {
   ---@module 'avante'
   ---@type avante.Config
   opts = {
-    instructions_file = "avante.md",
+    instructions_file = "avante.md", -- Avante will load this file and use it as system / guidance context for prompts
     provider = "copilot",
     auto_suggestions_provider = "openai",
     behaviour = {
@@ -42,6 +42,25 @@ return {
     i = {
       width = 0.45,
       border = "rounded",
+    },
+  },
+  -- Keymaps for quickly invoking Avante with commit / review prompts
+  keys = {
+    {
+      "<leader>gc",
+      function()
+        -- Generates a conventional + gitmoji commit message for staged changes using instructions_file guidance
+        vim.cmd([[AvanteAsk Generate a single concise gitmoji conventional commit message for the currently staged git diff. Follow the instructions file (commit formatting rules, gitmojis, wrap body at 72 chars). Include <gitmoji> <type>(<scope>): <description>. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. No trailing period in subject.]]);
+      end,
+      desc = "Avante: AI Commit Message",
+    },
+    {
+      "<leader>gr",
+      function()
+        -- Requests a review & refactor suggestions for staged changes
+        vim.cmd([[AvanteAsk Review the staged git diff. Provide: 1) High-level summary 2) Potential problems (bugs, perf, security) 3) Refactor suggestions 4) Improved commit message with gitmoji.]]);
+      end,
+      desc = "Avante: Review & Refactor",
     },
   },
   dependencies = {
