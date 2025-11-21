@@ -42,6 +42,7 @@ Follow these rules when generating commit messages.
 4. Body (if present) explains WHAT and WHY, not HOW.
 5. Wrap body at 72 chars.
 6. Reference issues if relevant (e.g. "Closes #123").
+7. Ensure to include a concise message for major changes, such as the addition of significant components or features, to maintain a clear project history.
 
 ### Examples
 ```
