@@ -78,3 +78,8 @@ set("n", "<leader>sp", function()
   require("spectre").open_file_search({ select_word = true })
 end, { desc = "Search in current file" })
 
+set("n", "<leader>cL", function()
+  local log = vim.fn.stdpath("state") .. "/lsp.log"
+  vim.fn.writefile({}, log)
+  print("LSP log cleared")
+end, { desc = "Clear LSP log" })
