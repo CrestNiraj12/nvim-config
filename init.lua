@@ -2,6 +2,7 @@ require("core-setup")
 require("keymaps")
 
 vim.loader.enable()
+vim.lsp.set_log_level("error")
 
 -- lazy plugin manager setup --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
