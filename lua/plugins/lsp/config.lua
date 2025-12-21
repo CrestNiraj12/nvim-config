@@ -58,11 +58,6 @@ lsp_config.setup = function()
           },
         })
       end,
-
-      -- Disable pyright - Python uses ALE instead
-      pyright = function()
-        -- Do nothing - Python formatting/fixing is handled by ALE
-      end,
     },
     automatic_installation = true,
   })

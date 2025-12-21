@@ -26,6 +26,12 @@ lsp_keymaps.setup = function()
         javascriptreact = true,
       }
 
+      -- Languages that use ALE instead of LSP for formatting
+      local ale_only_ft = {
+        python = true,
+        dart = true,
+      }
+
       local function format_and_organize_imports(filetype)
         if ts_js_ft[filetype] then
           vim.cmd("TSToolsOrganizeImports")
@@ -33,7 +39,14 @@ lsp_keymaps.setup = function()
           return
         end
 
-        -- FORMAT
+        -- Use ALEFix for ALE-dependent languages
+        if ale_only_ft[filetype] then
+          vim.cmd("ALEFix")
+          vim.wait(100)
+          return
+        end
+
+        -- FORMAT with LSP
         vim.lsp.buf.format({ async = false })
 
         local bufnr = vim.api.nvim_get_current_buf()
