@@ -29,7 +29,7 @@ return {
     -- Example: Enable ALE fixers
     vim.g.ale_fixers = {
       dart = {},
-      python = { 'black', 'ruff_format', 'isort' },
+      python = { 'black', 'isort' },
       css = { 'prettier' },
       cs = { 'clang-format', 'remove_trailing_lines', 'trim_whitespace' },
       javascript = { "prettier" },

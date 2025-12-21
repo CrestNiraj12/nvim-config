@@ -14,40 +14,32 @@ lsp_config.setup = function()
       "omnisharp",
     },
     handlers = {
-      lua_ls = function()
-        require('lspconfig').lua_ls.setup({
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { 'vim' },
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = {
+                vim.env.VIMRUNTIME,
               },
-              workspace = {
-                library = {
-                  vim.env.VIMRUNTIME,
-                },
-                checkThirdParty = false,
-              },
-              telemetry = {
-                enable = false, -- Do not send telemetry data
-              },
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false, -- Do not send telemetry data
             },
           },
-        })
-      end,
-      omnisharp = function()
-        require('lspconfig').omnisharp.setup({
-          handlers = {
-            ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
-            ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
-            ["textDocument/references"] = require('omnisharp_extended').references_handler,
-            ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
-          },
-        })
-      end,
-      -- Disable Ruff LSP since we use it via ALE
-      ruff = function()
-        -- Do nothing - Ruff is handled by ALE, not as an LSP
-      end,
+        },
+      }),
+      vim.lsp.config("omnisharp", {
+        handlers = {
+          ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+          ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+          ["textDocument/references"] = require('omnisharp_extended').references_handler,
+          ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+        },
+      }),
     },
     automatic_installation = true,
   })
