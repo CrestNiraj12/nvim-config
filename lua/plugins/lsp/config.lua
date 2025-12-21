@@ -12,7 +12,6 @@ lsp_config.setup = function()
       "rust_analyzer",
       "tailwindcss",
       "omnisharp",
-      "ruff",
     },
     handlers = {
       vim.lsp.config("lua_ls", {
