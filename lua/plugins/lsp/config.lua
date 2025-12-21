@@ -13,17 +13,18 @@ lsp_config.setup = function()
       "omnisharp",
     },
     handlers = {
-      -- Default handler using lspconfig
+      -- Default handler using vim.lsp
       function(server_name)
-        local lspconfig = require('lspconfig')
-        lspconfig[server_name].setup({
+        vim.lsp.enable(server_name)
+        vim.lsp.config(server_name, {
           capabilities = require('blink.cmp').get_lsp_capabilities(),
         })
       end,
 
       -- Lua LSP configuration
       lua_ls = function()
-        require('lspconfig').lua_ls.setup({
+        vim.lsp.enable('lua_ls')
+        vim.lsp.config('lua_ls', {
           capabilities = require('blink.cmp').get_lsp_capabilities(),
           settings = {
             Lua = {
@@ -46,7 +47,8 @@ lsp_config.setup = function()
 
       -- OmniSharp LSP configuration
       omnisharp = function()
-        require('lspconfig').omnisharp.setup({
+        vim.lsp.enable('omnisharp')
+        vim.lsp.config('omnisharp', {
           capabilities = require('blink.cmp').get_lsp_capabilities(),
           handlers = {
             ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
