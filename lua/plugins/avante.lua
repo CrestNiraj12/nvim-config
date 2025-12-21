@@ -25,16 +25,7 @@ return {
         model = "claude-opus-41",
         extra_request_body = {
           temperature = 0.75,
-          max_tokens = 2048,
-        },
-        tools = true,
-      },
-      gemini = {
-        model = "gemini-2.5-flash",
-        timeout = 30000,
-        extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 2048,
+          max_tokens = 1024,
         },
         tools = true,
       },
