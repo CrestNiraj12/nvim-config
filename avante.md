@@ -1,4 +1,9 @@
-# Avante Instructions
+# Avante Rules
+
+## ⚠️ NO AUTO-COMMITS
+**Do NOT commit unless explicitly requested. Only use git with proper formatting.**
+
+---
 
 ## Commit Format
 ```
@@ -6,37 +11,37 @@
 
 <body>
 ```
-Include body for WHAT/WHY; omit scope if unclear; no trailing period.
 
 ## Types & Gitmojis
-- ✨ feat: New feature
-- 🐛 fix: Bug fix
-- 📚 docs: Docs
-- 💄 style: Formatting
-- ♻️ refactor: Refactor
-- ⚡ perf: Perf
-- ✅ test: Tests
-- 👷 build: Build
-- 💚 ci: CI
-- 🔧 chore: Other
-- ⏪ revert: Revert
+| Emoji | Type | Purpose |
+|-------|------|---------|
+| ✨ | feat | New feature |
+| 🐛 | fix | Bug fix |
+| 📚 | docs | Documentation |
+| 💄 | style | Code formatting |
+| ♻️ | refactor | Refactoring |
+| ⚡ | perf | Performance |
+| ✅ | test | Tests |
+| 👷 | build | Build system |
+| 💚 | ci | CI/CD |
+| 🔧 | chore | Other changes |
+| ⏪ | revert | Revert commit |
+| 🎉 | init | Initial commit |
+| 🔥 | remove | Remove code/files |
+| 🚑 | hotfix | Critical fix |
+| 🔒 | security | Security fix |
 
-Extra: 🎉 init, 🔥 remove, 🚑 hotfix, 🔒 security, 🚀 deploy
-
-## Guidelines
-- Imperative: "Add", "Fix"
-- Subject <=50 chars, capitalize, no period
-- Body: WHAT/WHY, wrap 72
+## Rules
+- Subject: Max 50 chars, capitalize first letter, imperative mood, no period
+- Optional scope if unclear
+- Body: Explain WHAT & WHY, wrap at 72 chars
+- Blank line between subject and body
 
 ## Examples
 ```
 ✨ feat(auth): add JWT validation
 
-Implement middleware for JWTs.
-```
-```
-🐛 fix(api): handle nil user
+Implement JWT middleware to secure API endpoints.
+Validates tokens on all protected routes.
 ```
 
-## Usage
-- Generate for staged diff using Avante.
