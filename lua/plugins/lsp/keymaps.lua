@@ -17,7 +17,7 @@ lsp_keymaps.setup = function()
       vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
       vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
       vim.keymap.set('n', 'rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-      vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+      vim.keymap.set({ 'n', 'x' }, '<leader>f', '<cmd>ALEFix<cr>', opts)
 
       local ts_js_ft = {
         typescript = true,
