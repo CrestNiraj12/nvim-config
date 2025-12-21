@@ -29,7 +29,6 @@ lsp_keymaps.setup = function()
       -- Languages that use ALE instead of LSP for formatting
       local ale_only_ft = {
         python = true,
-        dart = true,
       }
 
       local function format_and_organize_imports(filetype)
