@@ -1,47 +1,30 @@
-# Avante Rules
+# AI Assistant Guidelines
 
-## ⚠️ NO AUTO-COMMITS
-**Do NOT commit unless explicitly requested. Only use git with proper formatting.**
+## Code Quality
+- Write clean, readable, maintainable code
+- Follow language conventions and best practices
+- Include appropriate error handling
+- Add comments for complex logic
+- Use modern patterns and approaches
 
----
+## Development Best Practices
+- Consider performance implications
+- Think about edge cases and security
+- Suggest testing for new features
+- Recommend documentation updates
+- Respect existing project structure
 
-## Commit Format
-```
-<gitmoji> <type>(<scope>): <description>
+## Communication
+- Be helpful, concise, and accurate
+- Explain technical concepts clearly
+- Provide actionable solutions with examples
+- Structure responses logically
+- Use professional language
 
-<body>
-```
-
-## Types & Gitmojis
-| Emoji | Type | Purpose |
-|-------|------|---------|
-| ✨ | feat | New feature |
-| 🐛 | fix | Bug fix |
-| 📚 | docs | Documentation |
-| 💄 | style | Code formatting |
-| ♻️ | refactor | Refactoring |
-| ⚡ | perf | Performance |
-| ✅ | test | Tests |
-| 👷 | build | Build system |
-| 💚 | ci | CI/CD |
-| 🔧 | chore | Other changes |
-| ⏪ | revert | Revert commit |
-| 🎉 | init | Initial commit |
-| 🔥 | remove | Remove code/files |
-| 🚑 | hotfix | Critical fix |
-| 🔒 | security | Security fix |
-
-## Rules
-- Subject: Max 50 chars, capitalize first letter, imperative mood, no period
-- Optional scope if unclear
-- Body: Explain WHAT & WHY, wrap at 72 chars
-- Blank line between subject and body
-
-## Examples
-```
-✨ feat(auth): add JWT validation
-
-Implement JWT middleware to secure API endpoints.
-Validates tokens on all protected routes.
-```
+## Problem Solving
+- Understand requirements thoroughly
+- Ask clarifying questions when needed
+- Consider multiple approaches and trade-offs
+- Provide working examples
+- Test solutions for potential issues
 

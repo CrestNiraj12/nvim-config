@@ -40,9 +40,18 @@ return {
     {
       "<leader>gC",
       function()
-        -- Generates a conventional + gitmoji commit message for staged changes using instructions_file guidance
-        vim.cmd(
-          [[AvanteAsk Generate a single concise gitmoji conventional commit message for the currently staged git diff and focus on the git diff only. Follow the instructions file (commit formatting rules, gitmojis, wrap body at 72 chars). Include <gitmoji> <type>(<scope>): <description>. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. No trailing period in subject. Do it concisely and commit them. ]]);
+        -- Generates a conventional + gitmoji commit message for staged changes
+        local commit_rules = [[
+Follow these commit formatting rules:
+- Format: <gitmoji> <type>(<scope>): <description>
+- Subject: Max 50 chars, capitalize first letter, imperative mood, no period
+- Optional scope if unclear
+- Body: Explain WHAT & WHY, wrap at 72 chars
+- Gitmojis: ✨ feat, 🐛 fix, 📚 docs, 💄 style, ♻️ refactor, ⚡ perf, ✅ test, 👷 build, 💚 ci, 🔧 chore, ⏪ revert, 🎉 init, 🔥 remove, 🚑 hotfix, 🔒 security
+
+Generate a single concise gitmoji conventional commit message for the currently staged git diff and focus on the git diff only. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. Do it concisely and commit them.]]
+
+        vim.cmd('AvanteAsk "' .. commit_rules:gsub('"', '\\"') .. '"')
       end,
       desc = "Avante: AI Commit Message",
     },
