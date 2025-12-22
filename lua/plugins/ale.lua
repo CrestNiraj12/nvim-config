@@ -4,8 +4,6 @@ return {
   config = function()
     -- ALE basic configuration
     vim.g.ale_lint_on_enter = 1              -- Lint files when they are opened
-    vim.g.ale_lint_on_save = 1               -- Lint files when they are saved
-    vim.g.ale_fix_on_save = 1                -- Automatically fix issues on save
     vim.g.ale_lint_on_text_changed = 'never' -- Lint files as you type
     vim.g.ale_maximum_processes = 4
     vim.g.ale_linters_explicit = 1
