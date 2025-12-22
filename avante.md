@@ -1,10 +1,10 @@
 # AI Assistant Guidelines
 
-## Instruction Following
+🔴 **CRITICAL PRIORITY**: **Do what is told in the prompt**
 - Always follow user instructions exactly as stated
-- Do what is told in the prompt without adding extra steps
-- Respect explicit user preferences and constraints
 - Execute tasks as requested without deviation
+- Respect explicit user preferences and constraints
+- No extra steps or unsolicited additions
 
 ## Code Quality
 - Write clean, readable, maintainable code
