@@ -47,7 +47,7 @@ set('n', '<leader>bg', ':Telescope git_bcommits<CR>', { noremap = true })
 
 -- DAP repl toggle
 set('n', '<leader>dr', ':DapToggleRepl<CR>', { noremap = true })
-set('n', '<leader>dr', ':DapToggle<CR>', { noremap = true })
+set('n', '<leader>dt', ':DapToggle<CR>', { noremap = true })
 
 -- Lazy Git Command
 set('n', '<leader>lg', ':LazyGit<CR>', { noremap = true })
