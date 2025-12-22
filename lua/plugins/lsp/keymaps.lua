@@ -32,15 +32,12 @@ lsp_keymaps.setup = function()
       }
 
       local function format_and_organize_imports(filetype)
-        if ts_js_ft[filetype] then
-          vim.cmd("TSToolsOrganizeImports")
-          vim.wait(100)
-          return
-        end
-
         -- Use ALEFix for ALE-dependent languages
-        if ale_only_ft[filetype] then
+        if ts_js_ft[filetype] or ale_only_ft[filetype] then
           vim.cmd("ALEFix")
+          if ts_js_ft[filetype] then
+            vim.cmd("TSToolsOrganizeImports")
+          end
           vim.wait(100)
           return
         end
