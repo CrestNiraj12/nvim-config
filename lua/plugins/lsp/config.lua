@@ -11,7 +11,6 @@ lsp_config.setup = function()
       "rust_analyzer",
       "tailwindcss",
       "omnisharp",
-      "copilot-language-server"
     },
     handlers = {
       -- Default handler using vim.lsp
