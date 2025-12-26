@@ -82,6 +82,28 @@ Generate a single concise gitmoji conventional commit message for the currently 
       desc = "Avante: AI Open PR",
     },
     {
+      "<leader>pr",
+      function()
+        local prompt = [[
+            Look at the current git repository and the currently checked-out branch.
+
+            1) Find the merge-base with the `develop` branch.
+            2) From that merge-base to HEAD, analyze ONLY the commits authored by "Niraj Shrestha".
+            3) Summarize those commits into:
+             - A concise PR title
+             - A clear PR description (what changed, why, how to test)
+
+            Do not ask for confirmation. Do not include commits before divergence.
+        ]]
+
+        -- Collapse newlines so Neovim doesn't treat them as separate Ex commands
+        prompt = prompt:gsub("\n", "\\n"):gsub('"', '\\"')
+
+        vim.cmd('AvanteAsk "' .. prompt .. '"')
+      end,
+      desc = "Avante: AI Open PR",
+    },
+    {
       "<leader>gr",
       function()
         -- Requests a review & refactor suggestions for staged changes
