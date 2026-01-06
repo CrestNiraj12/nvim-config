@@ -10,7 +10,6 @@ return {
   ---@module 'avante'
   ---@type avante.Config
   opts = {
-    instructions_file = "avante.md", -- Avante will load this file and use it as system / guidance context for prompts
     provider = "copilot",
     auto_suggestions_provider = "openai",
     behaviour = {
@@ -19,16 +18,6 @@ return {
       auto_set_keymaps = true,
       auto_apply_diff_after_generation = false,
       support_paste_from_clipboard = false,
-    },
-    providers = {
-      copilot = {
-        model = "claude-opus-41",
-        extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 1024,
-        },
-        tools = true,
-      },
     },
     i = {
       width = 0.45,

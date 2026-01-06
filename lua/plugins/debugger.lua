@@ -50,16 +50,32 @@ return {
     local dap = require("dap")
     dap.adapters.python = {
       type = "executable",
-      command = "python",
+      command = "python3",
       args = { "-m", "debugpy.adapter" },
     }
 
     dap.configurations.python = {
       {
+        name = "Debug current file",
+        type = "python",
+        request = "launch",
+        program = "${file}",
+        cwd = "${fileDirname}",
+        pythonPath = function()
+          local py = vim.fn.exepath("python3")
+          if py ~= "" then return py end
+
+          return vim.fn.exepath("python")
+        end,
+
+        console = "integratedTerminal",
+        justMyCode = true,
+      },
+      {
         -- Adjust this configuration to fit the project's environment
         type = "python",
         request = "launch",
-        name = "Launch file",
+        name = "Launch run server",
         program = function()
           local cwd = vim.fn.getcwd()
           return cwd .. '/run_server.py'
