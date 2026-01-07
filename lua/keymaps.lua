@@ -83,3 +83,5 @@ set("n", "<leader>cL", function()
   vim.fn.writefile({}, log)
   print("LSP log cleared")
 end, { desc = "Clear LSP log" })
+
+set("n", "<leader>nn", ":noh<CR>", { desc = "Clear search highlights" })
