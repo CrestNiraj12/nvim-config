@@ -4,6 +4,10 @@ require("keymaps")
 vim.loader.enable()
 vim.lsp.set_log_level("error")
 
+pcall(function()
+  vim.lsp.enable("copilot", false)
+end)
+
 -- lazy plugin manager setup --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

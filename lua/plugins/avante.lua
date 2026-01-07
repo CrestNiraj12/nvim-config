@@ -10,7 +10,7 @@ return {
   ---@module 'avante'
   ---@type avante.Config
   opts = {
-    provider = "copilot",
+    provider = "openai",
     auto_suggestions_provider = "openai",
     behaviour = {
       auto_suggestions = false,
