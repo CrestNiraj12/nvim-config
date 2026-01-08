@@ -1,6 +1,9 @@
 local lsp_keymaps = {}
 
 lsp_keymaps.setup = function()
+  -- One augroup shared across buffers; we clear per-buffer to avoid duplicates
+  local save_group = vim.api.nvim_create_augroup("LspOnSave", { clear = false })
+
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
       local opts = { buffer = event.buf }
@@ -11,13 +14,8 @@ lsp_keymaps.setup = function()
       vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
       vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
       vim.keymap.set('n', '<leader>e', function() vim.diagnostic.open_float() end, opts)
-      vim.keymap.set('n', '[d', function()
-        vim.diagnostic.jump({ count = -1 })
-      end, opts)
-
-      vim.keymap.set('n', ']d', function()
-        vim.diagnostic.jump({ count = 1 })
-      end, opts)
+      vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, opts)
+      vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, opts)
       vim.keymap.set('n', '<leader>dl', function() vim.diagnostic.setqflist() end, opts)
       vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
       vim.keymap.set('n', 'go', function() vim.lsp.buf.type_definition() end, opts)
@@ -47,32 +45,33 @@ lsp_keymaps.setup = function()
           if ts_js_ft[filetype] then
             vim.cmd("TSToolsOrganizeImports")
           end
-          vim.wait(100)
           return
         end
 
-        -- FORMAT with LSP (sync)
-        vim.lsp.buf.format({ async = false })
-
-        -- ORGANIZE IMPORTS via LSP codeAction (correct param shape: range + context)
         local bufnr = vim.api.nvim_get_current_buf()
+
+        -- FORMAT with LSP (sync, but capped so it can't freeze forever)
+        vim.lsp.buf.format({
+          bufnr = bufnr,
+          async = false,
+          timeout_ms = 300,
+        })
+
+        -- ORGANIZE IMPORTS via LSP codeAction (range + context)
         local clients = vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/codeAction" })
         if #clients == 0 then return end
 
         local win = vim.api.nvim_get_current_win()
         local encoding = clients[1].offset_encoding or 'utf-16'
-
-        -- make_range_params expects (win, offset_encoding)
         local range_params = vim.lsp.util.make_range_params(win, encoding)
 
-        -- Build CodeActionParams explicitly to avoid LuaLS "inject-field" warning
         local params = {
           textDocument = range_params.textDocument,
           range = range_params.range,
           context = { diagnostics = vim.diagnostic.get(bufnr) },
         }
 
-        local results = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params)
+        local results = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 200)
         if not results then return end
 
         for _, res in pairs(results) do
@@ -82,7 +81,6 @@ lsp_keymaps.setup = function()
                 apply = true,
                 context = { diagnostics = {}, only = { "source.organizeImports" } },
               })
-              vim.wait(100)
               return
             end
           end
@@ -90,12 +88,32 @@ lsp_keymaps.setup = function()
       end
 
       local function organize_and_format()
-        format_and_organize_imports(vim.bo.filetype)
+        local ft = vim.bo.filetype
+        local bufnr = vim.api.nvim_get_current_buf()
+
+        -- Lua doesn't have "imports" like TS/Go; keep saves fast and simple.
+        if ft == "lua" then
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            async = false,
+            timeout_ms = 200,
+            filter = function(client) return client.name == "lua_ls" end,
+          })
+          return
+        end
+
+        format_and_organize_imports(ft)
       end
 
-      vim.keymap.set('n', '<C-s>', organize_and_format, { buffer = event.buf, desc = 'Format and Organize Imports' })
+      vim.keymap.set('n', '<C-s>', organize_and_format, {
+        buffer = event.buf,
+        desc = 'Format and Organize Imports',
+      })
 
+      -- IMPORTANT: prevent duplicate autocmds per buffer
+      vim.api.nvim_clear_autocmds({ group = save_group, buffer = event.buf })
       vim.api.nvim_create_autocmd('BufWritePre', {
+        group = save_group,
         callback = organize_and_format,
         buffer = event.buf,
       })
