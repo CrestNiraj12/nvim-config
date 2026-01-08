@@ -50,13 +50,7 @@ set('n', '<leader>dr', ':DapToggleRepl<CR>', { noremap = true })
 set('n', '<leader>dt', ':DapToggle<CR>', { noremap = true })
 
 -- Lazy Git Command
-vim.keymap.set("n", "<leader>lg", function()
-  vim.cmd("tabnew")
-  vim.bo.buftype = "nofile"
-  vim.bo.bufhidden = "wipe"
-  vim.bo.swapfile = false
-  require("lazygit").lazygit()
-end, { desc = "LazyGit (new tab)" })
+set('n', '<leader>lg', ':LazyGit<CR>', { noremap = true })
 
 -- Horizontal Scroll
 set('n', '<Right>', 'zL', { noremap = true, desc = 'Horizontal Scroll Left' })
