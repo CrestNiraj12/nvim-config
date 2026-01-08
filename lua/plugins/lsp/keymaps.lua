@@ -91,6 +91,17 @@ lsp_keymaps.setup = function()
         local ft = vim.bo.filetype
         local bufnr = vim.api.nvim_get_current_buf()
 
+        -- Go: don't do codeAction imports on save; just format with gopls (with a real timeout)
+        if ft == "go" then
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            async = false,
+            timeout_ms = 1500,
+            filter = function(client) return client.name == "gopls" end,
+          })
+          return
+        end
+
         -- Lua doesn't have "imports" like TS/Go; keep saves fast and simple.
         if ft == "lua" then
           vim.lsp.buf.format({

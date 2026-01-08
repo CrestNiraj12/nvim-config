@@ -21,6 +21,21 @@ lsp_config.setup = function()
         })
       end,
 
+      -- Go LSP configuration
+      gopls = function()
+        vim.lsp.enable('gopls')
+        vim.lsp.config('gopls', {
+          capabilities = require('blink.cmp').get_lsp_capabilities(),
+          settings = {
+            gopls = {
+              gofumpt = true,
+              staticcheck = true,
+              analyses = { unusedparams = true },
+            },
+          },
+        })
+      end,
+
       -- Lua LSP configuration
       lua_ls = function()
         vim.lsp.enable('lua_ls')
