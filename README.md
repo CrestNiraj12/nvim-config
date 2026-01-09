@@ -45,6 +45,7 @@ brew install ripgrep gnu-sed
 37. copilot - AI-assisted code completion
 38. avante.nvim - AI-powered coding assistant with advanced context understanding and code generation capabilities
 39. nvim-ufo - Modern fold UI with better fold indicators and enhanced folding capabilities using treesitter
+40. compress-size.nvim - Display compressed file sizes in the status line
 
 ## Configuration for my nvim setup
 
