@@ -31,14 +31,34 @@ return {
       function()
         -- Generates a conventional + gitmoji commit message for staged changes
         local prompt = [[
-Follow these commit formatting rules:
-- Format: <gitmoji> <type>(<scope>): <description>
-- Subject: Max 50 chars, capitalize first letter, imperative mood, no period
-- Optional scope if unclear
-- Body: Explain WHAT & WHY, wrap at 72 chars
-- Gitmojis: ✨ feat, 🐛 fix, 📚 docs, 💄 style, ♻️ refactor, ⚡ perf, ✅ test, 👷 build, 💚 ci, 🔧 chore, ⏪ revert, 🎉 init, 🔥 remove, 🚑 hotfix, 🔒 security
+You are generating a git commit message.
 
-Generate a single concise gitmoji conventional commit message for the currently staged git diff and focus on the git diff only. Ask for missing scope if unclear. Provide optional body explaining WHAT and WHY. Do it concisely and commit them.]]
+Rules:
+- Format: <gitmoji> <type>(<scope>): <description>
+- Subject:
+  - Max 50 characters
+  - Capitalize first letter
+  - Imperative mood
+  - No trailing period
+- Scope:
+  - Optional
+  - Ask for it only if unclear from the diff
+- Body (optional):
+  - Explain WHAT changed and WHY
+  - Wrap lines at 72 characters
+
+Gitmoji mapping:
+✨ feat      🐛 fix        📚 docs       💄 style
+♻️ refactor ⚡ perf       ✅ test       👷 build
+💚 ci        🔧 chore     ⏪ revert     🎉 init
+🔥 remove    🚑 hotfix    🔒 security
+
+Instructions:
+- Generate **one concise** gitmoji conventional commit message
+- Base the message **only on the staged git diff**
+- Ignore unstaged or unrelated changes
+- If committing directly to the `develop` branch, use 🚑 hotfix
+- Do NOT include explanations outside the commit message]]
         prompt = prompt:gsub("\n", "\\n"):gsub('"', '\\"')
 
         vim.cmd('AvanteAsk "' .. prompt .. '"')
@@ -54,13 +74,15 @@ Generate a single concise gitmoji conventional commit message for the currently 
             1) Find the merge-base with the `develop` branch.
             2) From that merge-base to HEAD, analyze ONLY the commits authored by "Niraj Shrestha".
             3) Summarize those commits into:
-             - A concise PR title
+             - A concise PR title in this format: {branch name} | {title}
+             (where branch name is the current branch name and title is the generated title)
              - A clear PR description (what changed, why, how to test)
 
             Then create the Pull Request using GitHub CLI:
             gh pr create --base develop --head $(git branch --show-current) --title "<generated title>" --body "<generated description>"
 
-            Do not ask for confirmation. Do not include commits before divergence.
+            Do not ask for confirmation.
+            Do not include commits before divergence and properly format the description specifically the change lines (\n) must not be visible in the description!
         ]]
 
         -- Collapse newlines so Neovim doesn't treat them as separate Ex commands
