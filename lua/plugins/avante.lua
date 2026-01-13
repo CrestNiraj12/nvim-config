@@ -43,7 +43,7 @@ Rules:
 - Scope:
   - Optional
   - Ask for it only if unclear from the diff
-- Body (optional):
+- Body:
   - Explain WHAT changed and WHY
   - Wrap lines at 72 characters
 
@@ -58,7 +58,9 @@ Instructions:
 - Base the message **only on the staged git diff**
 - Ignore unstaged or unrelated changes
 - If committing directly to the `develop` branch, use 🚑 hotfix
-- Do NOT include explanations outside the commit message]]
+- Do NOT include explanations outside the commit message
+- Actually commit the changes with the generated message!
+]]
         prompt = prompt:gsub("\n", "\\n"):gsub('"', '\\"')
 
         vim.cmd('AvanteAsk "' .. prompt .. '"')
