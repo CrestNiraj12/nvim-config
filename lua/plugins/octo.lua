@@ -7,9 +7,10 @@ return {
   },
   cmd = "Octo",
   opts = {
-    picker = "snacks",
+    picker = "telescope",
     enable_builtin = true,
     default_to_projects_v2 = true,
+    users = "search"
   },
   keys = {
     { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
