@@ -9,6 +9,7 @@ return {
   opts = {
     picker = "snacks",
     enable_builtin = true,
+    default_to_projects_v2 = true,
   },
   keys = {
     { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
