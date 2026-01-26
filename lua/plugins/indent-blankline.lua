@@ -3,10 +3,10 @@ return {
   main = "ibl",
   opts = {
     indent = {
-      char = "▏",  -- SUPER thin line
+      char = "▏", -- SUPER thin line
     },
     exclude = {
-      filetypes = { "dart" },   -- Exclude dart files from indent lines
+      filetypes = { "dart" }, -- Exclude dart files from indent lines
     },
   },
 }
