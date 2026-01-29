@@ -145,6 +145,18 @@ return {
         Snacks.toggle.inlay_hints():map("<leader>uh")
         Snacks.toggle.indent():map("<leader>ug")
         Snacks.toggle.dim():map("<leader>uD")
+
+        vim.keymap.set("n", "<leader>rp", function()
+          vim.cmd("w")
+          local file = vim.fn.expand("%:p")
+          local dir  = vim.fn.expand("%:p:h")
+          Snacks.terminal.open({ "python3", file }, {
+            cwd = dir,
+            title = "Python Runner",
+            focus = true,
+            auto_close = false,
+          })
+        end, { desc = "Run Python in file dir (Snacks)" })
       end,
     })
   end,

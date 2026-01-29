@@ -50,7 +50,7 @@ return {
     local dap = require("dap")
     dap.adapters.python = {
       type = "executable",
-      command = "python3",
+      command = os.getenv("HOME") .. "/.venvs/nvim-dap/bin/python",
       args = { "-m", "debugpy.adapter" },
     }
 
@@ -70,31 +70,6 @@ return {
 
         console = "integratedTerminal",
         justMyCode = true,
-      },
-      {
-        -- Adjust this configuration to fit the project's environment
-        type = "python",
-        request = "launch",
-        name = "Launch run server",
-        program = function()
-          local cwd = vim.fn.getcwd()
-          return cwd .. '/run_server.py'
-        end,
-        pythonPath = function()
-          -- Automatically select the Python interpreter based on the project's environment
-          -- Example for virtualenv or any other environment tool
-          if vim.fn.executable("~/soudan/bin/python") == 1 then
-            return "~/soudan/bin/python"
-          else
-            return vim.fn.exepath("python")
-          end
-        end,
-        env = {
-          DJANGO_SETTINGS_MODULE = "soudanapi.settings.local"
-        },
-        autoReload = {
-          enable = true,
-        }
       },
       {
         type = 'python',

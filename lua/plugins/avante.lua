@@ -9,21 +9,35 @@ return {
   version = false, -- Never set this value to "*"! Never!
   ---@module 'avante'
   ---@type avante.Config
-  opts = {
-    provider = "openai",
-    auto_suggestions_provider = "openai",
-    behaviour = {
-      auto_suggestions = false,
-      auto_set_highlight_group = true,
-      auto_set_keymaps = true,
-      auto_apply_diff_after_generation = false,
-      support_paste_from_clipboard = false,
-    },
-    i = {
-      width = 0.45,
-      border = "rounded",
-    },
-  },
+  opts = function()
+    return {
+      provider = "ollama",
+      providers = {
+        ollama = {
+          model = "qwen2.5-coder:7b",
+          is_env_set = require("avante.providers.ollama").check_endpoint_alive,
+          extra_request_body = {
+            options = {
+              num_ctx = 2048,    -- ✅ smaller context = faster
+              num_predict = 256, -- ✅ shorter answers = faster
+              temperature = 0.2,
+            },
+          },
+        },
+      },
+      behaviour = {
+        auto_suggestions = false,
+        auto_set_highlight_group = true,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = false,
+        support_paste_from_clipboard = false,
+      },
+      i = {
+        width = 0.45,
+        border = "rounded",
+      },
+    }
+  end,
   -- Keymaps for quickly invoking Avante with commit / review prompts
   keys = {
     {
