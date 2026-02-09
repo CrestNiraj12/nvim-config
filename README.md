@@ -12,39 +12,38 @@ brew install ripgrep gnu-sed
 4.	Comment.nvim – Smart and powerful commenting plugin that supports commentstring, Treesitter, and more.
 5.	nvim-dap – Debug Adapter Protocol client implementation for Neovim.
 6.	fidget.nvim – Extensible UI for Neovim notifications and LSP progress messages.
-7.	vim-fugitive – A Git wrapper so awesome, it should be illegal.
-8.	gitsigns.nvim – Git integration for buffers, showing signs for added, changed, and removed lines.
-9.	nvim-lspconfig – Quickstart configurations for the Neovim LSP client.
-10.	telescope.nvim – Find, filter, preview, and pick files and more with a highly extendable fuzzy finder.
-11.	vim-tmux-navigator – Seamless navigation between tmux panes and Neovim splits using a consistent set of hotkeys.
-12.	nvim-treesitter – Treesitter configurations and abstraction layer for Neovim.
-13.	trouble.nvim – A pretty diagnostics, references, telescope results, quickfix, and location list.
-14.	undotree – Visualize your undo history in a tree format.
-15.	wakatime.nvim – Automatic time tracking for your coding activity.
-16.	flutter-tools.nvim – Tools to help with Flutter development in Neovim.
-17.	nvim-surround – Add, change, and delete surrounding characters with ease.
-18.	git-blame.nvim – Show git blame information inline.
-19.	which-key.nvim – Display available keybindings in a popup.
-20.	alpha-nvim – A fast and fully customizable greeter for Neovim.
-21.	black-nvim – Black formatter integration for Neovim.
-22.	log-highlight.nvim – Highlight logs in Neovim for better readability.
-23.	nvim-spectre – Search and replace tool with a nice UI.
-24.	smear-cursor.nvim – Animate the cursor with a smear effect for enhanced visual feedback.
-25.	friendly-snippets - Community maintained snippets for various programming languages
-26.	wilder - A more adventurous wildmenu
-27.	ale - Linting and fixing plugin
-28.	blink-cmp.nvim - Completion plugin
-29.	bufferline - A snazzy 💅 buffer line
-30.	nvim-treesitter-context - Shows the context of the currently visible buffer contents.
-31.	typescript-tools.nvim - The TypeScript Integration NeoVim Deserves
-32.	fidget - A pretty UI for Neovim LSP progress
-33.	nvim-ts-autotag - Automatically closes and renames surrounding tags in JSX/TSX.
-34.	copilot - AI-assisted code completion
-35.	avante.nvim - AI-powered coding assistant with advanced context understanding and code generation capabilities
-36.	nvim-ufo - Modern fold UI with better fold indicators and enhanced folding capabilities using treesitter
-37.	compress-size.nvim - Display compressed file sizes in the status line
-38.	snacks.nvim - A collection of small QoL plugins for Neovim, including pickers, explorer, zen mode, and more.
-39.	diffview.nvim - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+7.	gitsigns.nvim – Git integration for buffers, showing signs for added, changed, and removed lines.
+8.	nvim-lspconfig – Quickstart configurations for the Neovim LSP client.
+9.	telescope.nvim – Find, filter, preview, and pick files and more with a highly extendable fuzzy finder.
+10.	vim-tmux-navigator – Seamless navigation between tmux panes and Neovim splits using a consistent set of hotkeys.
+11.	nvim-treesitter – Treesitter configurations and abstraction layer for Neovim.
+12.	trouble.nvim – A pretty diagnostics, references, telescope results, quickfix, and location list.
+13.	undotree – Visualize your undo history in a tree format.
+14.	wakatime.nvim – Automatic time tracking for your coding activity.
+15.	flutter-tools.nvim – Tools to help with Flutter development in Neovim.
+16.	nvim-surround – Add, change, and delete surrounding characters with ease.
+17.	git-blame.nvim – Show git blame information inline.
+18.	which-key.nvim – Display available keybindings in a popup.
+19.	alpha-nvim – A fast and fully customizable greeter for Neovim.
+20.	black-nvim – Black formatter integration for Neovim.
+21.	log-highlight.nvim – Highlight logs in Neovim for better readability.
+22.	nvim-spectre – Search and replace tool with a nice UI.
+23.	smear-cursor.nvim – Animate the cursor with a smear effect for enhanced visual feedback.
+24.	friendly-snippets - Community maintained snippets for various programming languages
+25.	wilder - A more adventurous wildmenu
+26.	ale - Linting and fixing plugin
+27.	blink-cmp.nvim - Completion plugin
+28.	bufferline - A snazzy 💅 buffer line
+29.	nvim-treesitter-context - Shows the context of the currently visible buffer contents.
+30.	typescript-tools.nvim - The TypeScript Integration NeoVim Deserves
+31.	fidget - A pretty UI for Neovim LSP progress
+32.	nvim-ts-autotag - Automatically closes and renames surrounding tags in JSX/TSX.
+33.	copilot - AI-assisted code completion
+34.	avante.nvim - AI-powered coding assistant with advanced context understanding and code generation capabilities
+35.	nvim-ufo - Modern fold UI with better fold indicators and enhanced folding capabilities using treesitter
+36.	compress-size.nvim - Display compressed file sizes in the status line
+37.	snacks.nvim - A collection of small QoL plugins for Neovim, including pickers, explorer, zen mode, and more.
+38.	diffview.nvim - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
 
 ## Configuration for my nvim setup
 
