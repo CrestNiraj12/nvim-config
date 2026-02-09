@@ -5,10 +5,10 @@ set('n', '<leader>hs', ':split<CR>', { noremap = true, silent = true, desc = 'Ho
 set('n', '<leader>vs', ':vsplit<CR>', { noremap = true, silent = true, desc = 'Vertical Split' })
 
 -- Switch between splits with Ctrl + h/j/k/l
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
 -- Buffer Close All
 
@@ -85,3 +85,9 @@ set("n", "<leader>cL", function()
 end, { desc = "Clear LSP log" })
 
 set("n", "<leader>nn", ":noh<CR>", { desc = "Clear search highlights" })
+
+-- Diffview
+set("n", "<leader>Dg", "<cmd>DiffviewOpen<cr>", { desc = "Git Diff (Diffview)" })
+set("n", "<leader>Dc", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
+set("n", "<leader>Dh", "<cmd>DiffviewFileHistory<cr>", { desc = "Git File History" })
+set("n", "<leader>DH", "<cmd>DiffviewFileHistory %<cr>", { desc = "Current File History" })

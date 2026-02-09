@@ -44,6 +44,7 @@ brew install ripgrep gnu-sed
 36.	nvim-ufo - Modern fold UI with better fold indicators and enhanced folding capabilities using treesitter
 37.	compress-size.nvim - Display compressed file sizes in the status line
 38.	snacks.nvim - A collection of small QoL plugins for Neovim, including pickers, explorer, zen mode, and more.
+39.	diffview.nvim - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
 
 ## Configuration for my nvim setup
 

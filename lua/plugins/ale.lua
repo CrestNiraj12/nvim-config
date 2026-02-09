@@ -8,12 +8,13 @@ return {
     vim.g.ale_maximum_processes = 4
     vim.g.ale_linters_explicit = 1
     vim.g.ale_javascript_prettier_use_local_config = 1
+    vim.g.ale_disable_lsp = 1
 
     -- Additional ALE settings...
     -- Set up any ALE linters, fixers, or other options as needed
     -- Example: Enable specific linters
     vim.g.ale_linters = {
-      python = { 'flake8' },
+      python = { 'ruff' },
       dart = {},
       json = { 'jsonls' },
       yaml = { 'yamlls' },
@@ -27,7 +28,7 @@ return {
     -- Example: Enable ALE fixers
     vim.g.ale_fixers = {
       dart = {},
-      python = { 'black', 'isort' },
+      python = { 'ruff', 'black' },
       css = { 'prettier' },
       cs = { 'clang-format', 'remove_trailing_lines', 'trim_whitespace' },
       javascript = { "prettier" },
