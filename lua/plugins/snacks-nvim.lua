@@ -155,6 +155,10 @@ return {
             title = "Python Runner",
             focus = true,
             auto_close = false,
+            -- Force terminate the Python process if the terminal closes
+            on_exit = function()
+              vim.cmd(string.format("!pkill -f 'python3 %s'", vim.fn.fnamemodify(file, ':t') ))
+            end,
           })
         end, { desc = "Run Python in file dir (Snacks)" })
       end,
