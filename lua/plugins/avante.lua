@@ -139,7 +139,7 @@ Instructions:
       end,
       desc = "Avante: Review & Refactor",
     },
-    { "<leader>gs", function() vim.cmd([[AvanteStop]]) end,   desc = "Avante: Stop" },
+    { "<leader>aS", function() vim.cmd([[AvanteStop]]) end,   desc = "Avante: Stop" },
     { "<leader>gm", function() vim.cmd([[AvanteModels]]) end, desc = "Avante: Models" },
   },
   dependencies = {
