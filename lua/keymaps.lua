@@ -10,18 +10,6 @@ set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
 set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
--- Buffer Close All
-
-set('n', '<leader>ba', function()
-    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.api.nvim_buf_is_loaded(bufnr)
-          and vim.bo[bufnr].buftype == ''
-          and not vim.bo[bufnr].readonly then
-        vim.api.nvim_buf_delete(bufnr, { force = true })
-      end
-    end
-  end,
-  { noremap = true, silent = true, desc = 'Buffer Close All' })
 -- Save file
 set('n', '<leader>s', ':w<CR>', { noremap = true, silent = true, desc = 'Save file' })
 -- Close file
@@ -48,9 +36,6 @@ set('n', '<leader>bg', ':Telescope git_bcommits<CR>', { noremap = true })
 -- DAP repl toggle
 set('n', '<leader>dr', ':DapToggleRepl<CR>', { noremap = true })
 set('n', '<leader>dt', ':DapToggle<CR>', { noremap = true })
-
--- Lazy Git Command
-set('n', '<leader>lg', ':LazyGit<CR>', { noremap = true })
 
 -- Horizontal Scroll
 set('n', '<Right>', 'zL', { noremap = true, desc = 'Horizontal Scroll Left' })

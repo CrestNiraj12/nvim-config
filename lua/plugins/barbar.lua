@@ -1,4 +1,3 @@
-
 return {
   'romgrk/barbar.nvim',
   dependencies = {
@@ -12,7 +11,6 @@ return {
     local opts = { noremap = true, silent = true }
     map('n', '<Tab>', ':BufferNext<CR>', opts)
     map('n', '<S-Tab>', ':BufferPrevious<CR>', opts)
-    map('n', '<leader>bc', ':BufferClose<CR>', opts)
     -- Add more mappings as needed
   end,
   opts = {

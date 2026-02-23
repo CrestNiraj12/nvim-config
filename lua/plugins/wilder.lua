@@ -1,39 +1,32 @@
 return {
   "gelguy/wilder.nvim",
-  event = "CmdlineEnter",
-  build = ":UpdateRemotePlugins",
-  dependencies = { "romgrk/fzy-lua-native" }, -- Declare as a dependency
+  event = "CmdlineEnter", -- Lazy-load on entering the command line
+  dependencies = {
+    "romgrk/fzy-lua-native"
+  },
   config = function()
-    local wilder = require("wilder")
-
-    wilder.setup({ modes = { ":", "/", "?" } })
-
-    -- Use fuzzy matching for commands + file paths + searches
-    wilder.set_option("pipeline", {
-      wilder.branch(
-        wilder.cmdline_pipeline({
-          fuzzy = 1,
-          fuzzy_filter = wilder.lua_fzy_filter(),
-        }),
-        wilder.vim_search_pipeline()
-      ),
+    local wilder = require('wilder')
+    wilder.setup({
+      modes = { ':', '/', '?' }, -- Enable wilder for command mode and search modes
     })
 
-    -- Popup menu renderer
-    wilder.set_option(
-      "renderer",
-      wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-        border = "rounded",
+    -- Merge the configurations for renderer
+    wilder.set_option('renderer', wilder.popupmenu_renderer(
+      wilder.popupmenu_border_theme({
+        min_width = '100%', -- minimum height of the popupmenu, can also be a number
+        reverse = 0,        -- if 1, shows the candidates from bottom to top
+        pumblend = 20,
         highlighter = wilder.lua_fzy_highlighter(),
+        highlights = {
+          accent = wilder.make_hl('WilderAccent', 'Pmenu', { { a = 1 }, { a = 1 }, { foreground = '#f4468f' } }),
+        },
         left = { " ", wilder.popupmenu_devicons() },
         right = { " ", wilder.popupmenu_scrollbar() },
-      }))
-    )
+      })
+    ))
 
-    -- Keymaps for the wild menu
-    wilder.set_option("next_key", "<Tab>")
-    wilder.set_option("previous_key", "<S-Tab>")
-    wilder.set_option("accept_key", "<CR>")
-    wilder.set_option("reject_key", "<Esc>")
-  end,
+    -- Ensure the dependencies for the highlighters are met:
+    -- 1. `luarocks install pcre2` for lua_pcre2_highlighter
+    -- 2. Install `romgrk/fzy-lua-native` plugin for lua_fzy_highlighter
+  end
 }
