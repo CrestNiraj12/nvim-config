@@ -1,6 +1,9 @@
 local lsp_config = {}
 
 lsp_config.setup = function()
+  local blink = require('blink.cmp')
+  local capabilities = blink.get_lsp_capabilities()
+
   require('mason-lspconfig').setup({
     ensure_installed = {
       "gopls",
@@ -11,13 +14,31 @@ lsp_config.setup = function()
       "rust_analyzer",
       "tailwindcss",
       "omnisharp",
+      "vtsls",
+      "pyright",
+      "ruff",
     },
     handlers = {
       -- Default handler using vim.lsp
       function(server_name)
         vim.lsp.enable(server_name)
         vim.lsp.config(server_name, {
-          capabilities = require('blink.cmp').get_lsp_capabilities(),
+          capabilities = capabilities,
+        })
+      end,
+
+      vtsls = function()
+        vim.lsp.enable('vtsls')
+        vim.lsp.config('vtsls', {
+          capabilities = capabilities,
+          settings = {
+            typescript = {
+              format = { enable = false },
+            },
+            javascript = {
+              format = { enable = false },
+            },
+          },
         })
       end,
 
@@ -25,12 +46,13 @@ lsp_config.setup = function()
       gopls = function()
         vim.lsp.enable('gopls')
         vim.lsp.config('gopls', {
-          capabilities = require('blink.cmp').get_lsp_capabilities(),
+          capabilities = capabilities,
           settings = {
             gopls = {
               gofumpt = true,
               staticcheck = true,
               analyses = { unusedparams = true },
+              format = true,
             },
           },
         })
@@ -40,7 +62,7 @@ lsp_config.setup = function()
       lua_ls = function()
         vim.lsp.enable('lua_ls')
         vim.lsp.config('lua_ls', {
-          capabilities = require('blink.cmp').get_lsp_capabilities(),
+          capabilities = capabilities,
           settings = {
             Lua = {
               diagnostics = {
@@ -55,6 +77,7 @@ lsp_config.setup = function()
               telemetry = {
                 enable = false,
               },
+              format = true,
             },
           },
         })
@@ -64,7 +87,12 @@ lsp_config.setup = function()
       omnisharp = function()
         vim.lsp.enable('omnisharp')
         vim.lsp.config('omnisharp', {
-          capabilities = require('blink.cmp').get_lsp_capabilities(),
+          capabilities = capabilities,
+          settings = {
+            omnisharp = {
+              format = true,
+            },
+          },
           handlers = {
             ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
             ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,

@@ -5,6 +5,15 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    input = { enabled = true },
+    keymap = { enabled = true },
+    indent = {
+      enabled = true,
+      char = "▏",
+      scope = {
+        char = "|",
+      },
+    },
     toggle = { enabled = true },
     bufdelete = { enabled = true },
     image = { enabled = true },
@@ -195,7 +204,7 @@ return {
         Snacks.toggle.indent():map("<leader>ug")
         Snacks.toggle.dim():map("<leader>uD")
 
-        vim.keymap.set("n", "<leader>rp", function()
+        Snacks.keymap.set("n", "<leader>rp", function()
           vim.cmd("w")
           local file = vim.fn.expand("%:p")
           local dir  = vim.fn.expand("%:p:h")
@@ -209,7 +218,7 @@ return {
               vim.cmd(string.format("!pkill -f 'python3 %s'", vim.fn.fnamemodify(file, ':t')))
             end,
           })
-        end, { desc = "Run Python in file dir (Snacks)" })
+        end, { ft = "python", desc = "Run Python in file dir (Snacks)" })
       end,
     })
   end,
