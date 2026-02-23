@@ -40,6 +40,8 @@ brew install ripgrep gnu-sed
 32. compress-size.nvim - Display compressed file sizes in the status line
 33. snacks.nvim - A collection of small QoL plugins for Neovim, including pickers, explorer, zen mode, and more.
 34. diffview.nvim - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+35. edgy.nvim - Manage window layouts with ease, providing edge windows for sidebars and panels.
+36. outline.nvim - A symbol outline for Neovim that displays code structure and navigation.
 
 ## Configuration for my nvim setup
 

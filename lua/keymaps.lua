@@ -51,18 +51,6 @@ set('n', '=', '<C-w>>', { noremap = true, desc = 'Decrease split width' })
 set('n', 'n', '<CMD>Oil<CR>', { desc = "Open parent directory" })
 set("n", "<leader>xl", "<cmd>lua require('dap.repl').clear()<CR>", { noremap = true, silent = true })
 
-set("n", "<leader>sw", function()
-  require("spectre").open_visual({ select_word = true })
-end, { desc = "Search current word" })
-
-set("v", "<leader>sw", function()
-  require("spectre").open_visual()
-end, { desc = "Search selection" })
-
-set("n", "<leader>sp", function()
-  require("spectre").open_file_search({ select_word = true })
-end, { desc = "Search in current file" })
-
 set("n", "<leader>cL", function()
   local log = vim.fn.stdpath("state") .. "/lsp.log"
   vim.fn.writefile({}, log)
@@ -70,9 +58,3 @@ set("n", "<leader>cL", function()
 end, { desc = "Clear LSP log" })
 
 set("n", "<leader>nn", ":noh<CR>", { desc = "Clear search highlights" })
-
--- Diffview
-set("n", "<leader>Dg", "<cmd>DiffviewOpen<cr>", { desc = "Git Diff (Diffview)" })
-set("n", "<leader>Dc", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" })
-set("n", "<leader>Dh", "<cmd>DiffviewFileHistory<cr>", { desc = "Git File History" })
-set("n", "<leader>DH", "<cmd>DiffviewFileHistory %<cr>", { desc = "Current File History" })

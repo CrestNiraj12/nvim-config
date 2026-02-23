@@ -10,8 +10,24 @@ return {
       end,
       desc = "Toggle Spectre",
     },
+    {
+      "<leader>sW",
+      function()
+        require("spectre").open_visual({ select_word = true })
+      end,
+      desc = "Search current word"
+    },
+    {
+      "<leader>sp",
+      function()
+        require("spectre").open_file_search({ select_word = true })
+      end,
+      desc = "Search in current file"
+    },
   },
   opts = {
-    -- You can add custom options here
+    preview = {
+      enabled = true,
+    },
   },
 }

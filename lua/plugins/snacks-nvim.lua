@@ -19,15 +19,12 @@ return {
     image = { enabled = true },
     lazygit = { enabled = true },
     bigfile = { enabled = true },
-    -- dashboard = { enabled = true },
     explorer = {
       enabled = true,
       keys = {
         ["H"] = "toggle_hidden"
       }
     },
-    -- indent = { enabled = true },
-    input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
@@ -148,6 +145,7 @@ return {
     { "<leader>cR", function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
     { "<leader>gB", function() Snacks.gitbrowse() end,                                      desc = "Git Browse",               mode = { "n", "v" } },
     { "<leader>un", function() Snacks.notifier.hide() end,                                  desc = "Dismiss All Notifications" },
+    { "<c-x>",      function() Snacks.terminal.open() end,                                  desc = "Open Terminal" },
     { "<c-/>",      function() Snacks.terminal() end,                                       desc = "Toggle Terminal" },
     { "<c-_>",      function() Snacks.terminal() end,                                       desc = "which_key_ignore" },
     {
