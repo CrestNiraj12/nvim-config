@@ -13,7 +13,7 @@ return {
     opts.left = {
       {
         title = "Explorer",
-        ft = "snacks_explorer",
+        ft = { "snacks_picker_list", "snacks_picker_input" },
         size = { width = 32, height = 0.5 },
         pinned = true,
         collapsed = false,
@@ -53,18 +53,24 @@ return {
     }
 
     opts.right = {
+      { ft = "spectre_panel", title = "Spectre", size = { width = 60 } },
+      {
+        title = "Avante",
+        ft = { "Avante", "AvanteInput", "AvanteTodos", "AvanteSelectedCode", "AvanteSelectedFiles" },
+        size = { width = 50 },
+      }
+    }
+
+    opts.top = {
       {
         ft = "help",
         title = "Help",
-        size = { width = 60 },
+        size = { height = 10 },
         filter = function(buf)
           return vim.bo[buf].buftype == "help"
         end,
-      },
-      { ft = "spectre_panel", title = "Spectre", size = { width = 60 } },
+      }
     }
-
-    opts.top = opts.top or {}
 
     for _, pos in ipairs({ "top", "bottom", "left", "right" }) do
       opts[pos] = opts[pos] or {}
