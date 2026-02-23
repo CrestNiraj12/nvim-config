@@ -4,6 +4,11 @@ lsp_config.setup = function()
   local blink = require('blink.cmp')
   local capabilities = blink.get_lsp_capabilities()
 
+  local function disable_formatting(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+
   require('mason-lspconfig').setup({
     ensure_installed = {
       "gopls",
@@ -17,6 +22,7 @@ lsp_config.setup = function()
       "vtsls",
       "pyright",
       "ruff",
+      "eslint"
     },
     handlers = {
       -- Default handler using vim.lsp
@@ -24,6 +30,19 @@ lsp_config.setup = function()
         vim.lsp.enable(server_name)
         vim.lsp.config(server_name, {
           capabilities = capabilities,
+        })
+      end,
+
+      eslint = function()
+        vim.lsp.enable('eslint')
+        vim.lsp.config('eslint', {
+          capabilities = capabilities,
+          settings = {
+            eslint = {
+              format = { enable = false }
+            },
+          },
+          on_attach = disable_formatting,
         })
       end,
 
@@ -39,6 +58,7 @@ lsp_config.setup = function()
               format = { enable = false },
             },
           },
+          on_attach = disable_formatting,
         })
       end,
 
@@ -52,7 +72,6 @@ lsp_config.setup = function()
               gofumpt = true,
               staticcheck = true,
               analyses = { unusedparams = true },
-              format = true,
             },
           },
         })
@@ -77,7 +96,6 @@ lsp_config.setup = function()
               telemetry = {
                 enable = false,
               },
-              format = true,
             },
           },
         })
@@ -88,11 +106,6 @@ lsp_config.setup = function()
         vim.lsp.enable('omnisharp')
         vim.lsp.config('omnisharp', {
           capabilities = capabilities,
-          settings = {
-            omnisharp = {
-              format = true,
-            },
-          },
           handlers = {
             ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
             ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,

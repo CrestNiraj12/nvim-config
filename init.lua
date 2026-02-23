@@ -45,3 +45,13 @@ vim.cmd [[au InsertLeave * silent! wa]]
 vim.o.autoread = true
 vim.o.updatetime = 50
 vim.api.nvim_create_autocmd("CursorHold", { pattern = "*", command = "checktime" })
+
+vim.diagnostic.config({
+  virtual_text = true, -- inline text
+  signs = true,        -- gutter icons
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+vim.opt.updatetime = 250

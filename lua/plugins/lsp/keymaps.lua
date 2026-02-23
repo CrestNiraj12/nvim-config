@@ -5,7 +5,7 @@ lsp_keymaps.setup = function()
     callback = function(event)
       vim.api.nvim_create_autocmd("BufWritePre", {
         callback = function(args)
-          vim.lsp.buf.format({
+          require("conform").format({
             bufnr = args.buf,
           })
         end
