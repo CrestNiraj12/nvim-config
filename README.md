@@ -42,6 +42,7 @@ brew install ripgrep gnu-sed
 34. diffview.nvim - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
 35. edgy.nvim - Manage window layouts with ease, providing edge windows for sidebars and panels.
 36. outline.nvim - A symbol outline for Neovim that displays code structure and navigation.
+37. conform.nvim - Lightweight yet powerful code formatter supporting multiple languages with unified formatting configuration.
 
 ## Configuration for my nvim setup
 
