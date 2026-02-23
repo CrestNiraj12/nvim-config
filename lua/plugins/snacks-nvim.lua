@@ -7,7 +7,12 @@ return {
   opts = {
     bigfile = { enabled = true },
     -- dashboard = { enabled = true },
-    explorer = { enabled = true },
+    explorer = {
+      enabled = true,
+      keys = {
+        ["H"] = "toggle_hidden"
+      }
+    },
     -- indent = { enabled = true },
     input = { enabled = true },
     notifier = {
@@ -37,6 +42,7 @@ return {
     { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
     { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     { "<leader>ff",      function() Snacks.picker.files() end,                                   desc = "Find Files" },
+    { "<leader>hf",      function() Snacks.picker.files({ hidden = true, ignored = true }) end,  desc = "Find Hidden Files" },
     { "<leader>fp",      function() Snacks.picker.projects() end,                                desc = "Projects" },
     { "<leader>fr",      function() Snacks.picker.recent() end,                                  desc = "Recent" },
     -- git
@@ -157,7 +163,7 @@ return {
             auto_close = false,
             -- Force terminate the Python process if the terminal closes
             on_exit = function()
-              vim.cmd(string.format("!pkill -f 'python3 %s'", vim.fn.fnamemodify(file, ':t') ))
+              vim.cmd(string.format("!pkill -f 'python3 %s'", vim.fn.fnamemodify(file, ':t')))
             end,
           })
         end, { desc = "Run Python in file dir (Snacks)" })

@@ -36,6 +36,7 @@ return {
     local builtin = require("telescope.builtin")
     local k = vim.keymap
     local ignore_patterns = { "migrations/.*", "%.g%.dart$", "freezed%.dart$" }
+
     -- Update these lines to include file_ignore_patterns in the options
     k.set("n", "<leader>fg", function() builtin.live_grep({ file_ignore_patterns = ignore_patterns }) end, {})
     k.set("n", "<leader>fb", builtin.buffers, {})
