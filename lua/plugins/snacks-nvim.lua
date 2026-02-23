@@ -5,6 +5,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    toggle = { enabled = true },
     bufdelete = { enabled = true },
     image = { enabled = true },
     lazygit = { enabled = true },
@@ -33,7 +34,7 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "chafa ~/.config/satoru.png --format symbols --symbols vhalf --size 60x17; sleep .1",
+          cmd = "chafa ~/.config/wallpaper.png --format symbols --symbols vhalf --size 60x17; sleep .1",
           height = 17,
           padding = 1,
         },

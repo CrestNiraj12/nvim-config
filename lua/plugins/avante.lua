@@ -11,20 +11,7 @@ return {
   ---@type avante.Config
   opts = function()
     return {
-      provider = "ollama",
-      providers = {
-        ollama = {
-          model = "qwen2.5-coder:7b",
-          is_env_set = require("avante.providers.ollama").check_endpoint_alive,
-          extra_request_body = {
-            options = {
-              num_ctx = 2048,    -- ✅ smaller context = faster
-              num_predict = 256, -- ✅ shorter answers = faster
-              temperature = 0.2,
-            },
-          },
-        },
-      },
+      provider = "copilot",
       behaviour = {
         auto_suggestions = false,
         auto_set_highlight_group = true,
