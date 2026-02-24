@@ -1,6 +1,4 @@
 return {
-  "CrestNiraj12/compress-size.nvim",
-  opts = {
-
-  }
+	"CrestNiraj12/compress-size.nvim",
+	opts = {},
 }
