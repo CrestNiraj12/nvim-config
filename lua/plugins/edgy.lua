@@ -13,7 +13,10 @@ return {
 		opts.left = {
 			{
 				title = "Explorer",
-				ft = { "snacks_picker_list", "snacks_picker_input" },
+				ft = {
+					"snacks_picker_list",
+					"snacks_picker_input",
+				},
 				size = { width = 32, height = 0.5 },
 				pinned = true,
 				collapsed = false,

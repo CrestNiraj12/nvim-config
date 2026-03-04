@@ -3,15 +3,6 @@ local lsp_keymaps = {}
 lsp_keymaps.setup = function()
 	vim.api.nvim_create_autocmd("LspAttach", {
 		callback = function(event)
-			local conform = require("conform")
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				callback = function(args)
-					conform.format({
-						bufnr = args.buf,
-					})
-				end,
-			})
-
 			local opts = { buffer = event.buf }
 			local snacks = require("snacks")
 
