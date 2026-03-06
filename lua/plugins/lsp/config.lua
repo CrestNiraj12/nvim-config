@@ -23,6 +23,8 @@ lsp_config.setup = function()
 			"pyright",
 			"ruff",
 			"eslint",
+			"astro",
+			"svelte",
 		},
 		handlers = {
 			-- Default handler using vim.lsp
@@ -60,6 +62,28 @@ lsp_config.setup = function()
 					on_attach = disable_formatting,
 				})
 				vim.lsp.enable("vtsls")
+			end,
+
+			-- astro
+			astro = function()
+				vim.lsp.config("astro", {
+					capabilities = capabilities,
+					init_options = { typescript = {} },
+					on_attach = disable_formatting,
+				})
+				vim.lsp.enable("astro")
+			end,
+
+			-- svelte
+			svelte = function()
+				vim.lsp.config("svelte", {
+					capabilities = capabilities,
+					settings = {
+						svelte = { plugin = { typescript = { enable = true } } },
+					},
+					on_attach = disable_formatting,
+				})
+				vim.lsp.enable("svelte")
 			end,
 
 			-- Go LSP configuration
@@ -112,14 +136,11 @@ lsp_config.setup = function()
 					},
 				})
 
-				-- Now that the language server is configured, it must be enabled
-				vim.lsp.enable("lua_ls")
 				vim.lsp.enable("lua_ls")
 			end,
 
 			-- OmniSharp LSP configuration
 			omnisharp = function()
-				vim.lsp.enable("omnisharp")
 				vim.lsp.config("omnisharp", {
 					capabilities = capabilities,
 					handlers = {
@@ -129,6 +150,7 @@ lsp_config.setup = function()
 						["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
 					},
 				})
+				vim.lsp.enable("omnisharp")
 			end,
 		},
 		automatic_installation = true,

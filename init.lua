@@ -1,24 +1,25 @@
 require("core-setup")
 require("keymaps")
+require("user.config.highlights")
 
 vim.loader.enable()
 vim.lsp.set_log_level("error")
 
 pcall(function()
-  vim.lsp.enable("copilot", false)
+	vim.lsp.enable("copilot", false)
 end)
 
 -- lazy plugin manager setup --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -32,14 +33,14 @@ vim.opt.swapfile = false
 vim.opt.laststatus = 3
 
 local plugins = {
-  { import = "plugins" },
+	{ import = "plugins" },
 }
 require("lazy").setup(plugins)
 
 -- Autosave when the window loses focus or buffer is hidden --
-vim.cmd [[au FocusLost * silent! wa]]
-vim.cmd [[au BufLeave * silent! wa]]
-vim.cmd [[au InsertLeave * silent! wa]]
+vim.cmd([[au FocusLost * silent! wa]])
+vim.cmd([[au BufLeave * silent! wa]])
+vim.cmd([[au InsertLeave * silent! wa]])
 
 -- Autoreload file changes --
 vim.o.autoread = true
@@ -47,11 +48,11 @@ vim.o.updatetime = 50
 vim.api.nvim_create_autocmd("CursorHold", { pattern = "*", command = "checktime" })
 
 vim.diagnostic.config({
-  virtual_text = true, -- inline text
-  signs = true,        -- gutter icons
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
+	virtual_text = true, -- inline text
+	signs = true, -- gutter icons
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
 })
 
 vim.opt.updatetime = 250

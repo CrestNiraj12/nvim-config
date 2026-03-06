@@ -9,9 +9,13 @@ return {
 		keymap = { enabled = true },
 		indent = {
 			enabled = true,
-			char = "▏",
+			indent = {
+				char = "▏",
+				hl = "SnacksIndent",
+			},
 			scope = {
 				char = "|",
+				hl = "SnacksIndentScope",
 			},
 		},
 		toggle = { enabled = true },

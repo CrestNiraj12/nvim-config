@@ -9,6 +9,12 @@ return {
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+			svelte = { "prettierd", "prettier" },
+			astro = { "prettierd", "prettier" },
+			css = { "prettierd", "prettier" },
+			html = { "prettierd", "prettier" },
+			json = { "prettierd", "prettier" },
+			yaml = { "prettierd", "prettier" },
 		},
 		format_on_save = {
 			timeout_ms = 500,
