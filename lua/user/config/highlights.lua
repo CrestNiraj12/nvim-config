@@ -4,7 +4,7 @@ vim.api.nvim_set_hl(0, "SnacksIndent", {
 })
 
 vim.api.nvim_set_hl(0, "SnacksIndentScope", {
-	fg = "#8c5665",
+	fg = "#7a4f5c",
 	bg = "NONE",
 	bold = false,
 })
