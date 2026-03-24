@@ -56,3 +56,7 @@ vim.diagnostic.config({
 })
 
 vim.opt.updatetime = 250
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↪ "
